@@ -9,7 +9,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-[80vh] flex items-center justify-center bg-white dark:bg-gray-900 relative pt-20 pb-4 lg:pt-16 lg:pb-14">
+    <section id="home" className="h-screen flex items-center justify-center bg-white dark:bg-gray-900 relative">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Left Column - Details */}
