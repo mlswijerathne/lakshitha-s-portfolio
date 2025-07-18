@@ -7,5 +7,10 @@ export default defineConfig({
   base: '/', // For custom domain
   build: {
     outDir: 'dist'
+  },
+  esbuild: {
+    loader: "jsx",
+    include: /src\/.*\.[jt]sx?$/,
+    exclude: []
   }
 })
