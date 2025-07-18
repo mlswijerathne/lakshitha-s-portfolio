@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import { projects } from '../../data/portfolioData';
 import { useTheme } from '../../context/ThemeContext';
 
+// Import images
+import AuctionImg from '../../assets/Auction.png';
+import InventryImg from '../../assets/Inventry.png';
+import WasteImg from '../../assets/Waste.png';
+import FinanceImg from '../../assets/Finance.png';
+import FoodImg from '../../assets/Food.png';
+import OasisImg from '../../assets/Oasis.png';
+
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -27,16 +35,16 @@ const Portfolio = () => {
   }, [selectedImage, selectedProject]);
 
   const getProjectImage = (project) => {
-    // Map project titles to image files
+    // Map project titles to imported image files
     const imageMap = {
-      'Online Auction Management System': '/src/assets/Auction.png',
-      'Inventory Management System': '/src/assets/Inventry.png',
-      'Waste Management System': '/src/assets/Waste.png',
-      'Finance Management System': '/src/assets/Finance.png',
-      'Food Order App': '/src/assets/Food.png',
-      'Oasis Protocol Platform': '/src/assets/Oasis.png'
+      'Online Auction Management System': AuctionImg,
+      'Inventory Management System': InventryImg,
+      'Waste Management System': WasteImg,
+      'Finance Management System': FinanceImg,
+      'Food Order App': FoodImg,
+      'Oasis Protocol Platform': OasisImg
     };
-    return imageMap[project.title] || '/src/assets/Oasis.png';
+    return imageMap[project.title] || OasisImg;
   };
 
   // Check if a project is a mobile application
@@ -341,13 +349,13 @@ const Portfolio = () => {
               <div className="w-full h-full flex items-center justify-center p-4">
                 {/* Check if this is a mobile app based on the image name */}
                 <div className={`relative ${
-                  selectedImage && selectedImage.includes('Food.png') ? 'max-w-sm sm:max-w-md' : 'max-w-full'
+                  selectedImage && selectedImage === FoodImg ? 'max-w-sm sm:max-w-md' : 'max-w-full'
                 } max-h-full`}>
                   <img 
                     src={selectedImage}
                     alt="Project screenshot - Full view"
                     className={`max-w-full max-h-full rounded-xl shadow-2xl ring-1 ring-white/20 transition-transform duration-300 hover:scale-105 ${
-                      selectedImage && selectedImage.includes('Food.png') 
+                      selectedImage && selectedImage === FoodImg 
                         ? 'object-contain bg-gradient-to-b from-gray-800 to-gray-900 p-6' 
                         : 'object-contain'
                     }`}
@@ -361,7 +369,7 @@ const Portfolio = () => {
                   />
                   
                   {/* Mobile App Frame Indicator */}
-                  {selectedImage && selectedImage.includes('Food.png') && (
+                  {selectedImage && selectedImage === FoodImg && (
                     <div className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-black/30 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full">
                       📱 Mobile Application Preview
                     </div>
