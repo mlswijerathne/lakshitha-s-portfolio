@@ -1,9 +1,10 @@
 name: Deploy React + Vite App to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch: # Manual trigger only
+  # push:
+  #   branches:
+  #     - main
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
