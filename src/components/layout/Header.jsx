@@ -37,7 +37,7 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="text-xl font-bold text-gray-900 dark:text-white transform hover:scale-110 transition-transform duration-300 cursor-pointer">
+            <span className="text-xl font-bold text-gray-900 dark:text-white transition-transform duration-300 cursor-pointer">
               {personalInfo?.name?.split(' ').map(name => name[0]).join('') || 'LW'}
             </span>
           </div>
@@ -48,7 +48,7 @@ const Header = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 relative group"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 text-sm font-medium transition-all duration-300 relative group"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -60,7 +60,7 @@ const Header = () => {
           <div className="flex items-center space-x-3">
             <button
               onClick={toggleTheme}
-              className="p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-300 rounded-md transform hover:scale-110 hover:rotate-12"
+              className="p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-300 rounded-md"
             >
               {theme === 'dark' ? (
                 <SunIcon className="w-5 h-5" />
@@ -72,7 +72,7 @@ const Header = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-md transition-all duration-300 transform hover:scale-110"
+              className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-md transition-all duration-300"
             >
               {isMenuOpen ? (
                 <XMarkIcon className="w-6 h-6 transform rotate-180 transition-transform duration-300" />
@@ -94,7 +94,7 @@ const Header = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 text-sm rounded-md transform hover:translate-x-2"
+                className="block w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 text-sm rounded-md"
               >
                 {item.name}
               </button>

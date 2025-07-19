@@ -43,7 +43,7 @@ const SocialIcons = ({ className = '', iconSize = 24, showLabels = false }) => {
         <div key={social.name} className="flex flex-col items-center">
           <button
             onClick={() => handleClick(social.url)}
-            className={`p-2 text-gray-600 dark:text-gray-400 ${social.color} transition-colors duration-200 hover:scale-110 transform`}
+            className={`p-2 text-gray-600 dark:text-gray-400 ${social.color} transition-colors duration-200`}
             aria-label={`Visit ${social.name} profile`}
             title={social.name}
           >
