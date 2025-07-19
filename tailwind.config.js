@@ -13,10 +13,10 @@ export default {
       animation: {
         'gradient-x': 'gradient-x 15s ease infinite',
         'float': 'float 6s ease-in-out infinite',
-        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-        'fade-in-left': 'fadeInLeft 0.6s ease-out forwards',
-        'fade-in-right': 'fadeInRight 0.6s ease-out forwards',
-        'slide-in-down': 'slideInDown 0.6s ease-out forwards',
+        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+        'fade-in-left': 'fadeInLeft 0.5s ease-out forwards',
+        'fade-in-right': 'fadeInRight 0.5s ease-out forwards',
+        'slide-in-down': 'slideInDown 0.5s ease-out forwards',
         'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
         'bounce-gentle': 'bounce-gentle 2s infinite',
         'typing': 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite',
@@ -39,7 +39,7 @@ export default {
         'fadeInUp': {
           'from': {
             opacity: '0',
-            transform: 'translateY(30px)',
+            transform: 'translateY(20px)',
           },
           'to': {
             opacity: '1',
@@ -49,7 +49,7 @@ export default {
         'fadeInLeft': {
           'from': {
             opacity: '0',
-            transform: 'translateX(-30px)',
+            transform: 'translateX(-20px)',
           },
           'to': {
             opacity: '1',
@@ -59,7 +59,7 @@ export default {
         'fadeInRight': {
           'from': {
             opacity: '0',
-            transform: 'translateX(30px)',
+            transform: 'translateX(20px)',
           },
           'to': {
             opacity: '1',
@@ -69,7 +69,7 @@ export default {
         'slideInDown': {
           'from': {
             opacity: '0',
-            transform: 'translateY(-30px)',
+            transform: 'translateY(-20px)',
           },
           'to': {
             opacity: '1',

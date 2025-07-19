@@ -114,14 +114,14 @@ const Portfolio = () => {
               data-scroll="fade-up"
             >
               {/* Project Image */}
-              <div className="relative h-56 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-700 dark:to-gray-600 cursor-pointer group-hover:shadow-xl transition-all duration-300">
+              <div className="relative h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-700 dark:to-gray-600 cursor-pointer group-hover:shadow-xl transition-all duration-300">
                 <img 
                   src={getProjectImage(project)}
                   alt={project.title}
-                  className={`w-full h-full transition-transform duration-500 cursor-pointer group-hover:scale-110 ${
+                  className={`w-full h-full transition-transform duration-500 cursor-pointer group-hover:scale-105 ${
                     isMobileProject(project) 
                       ? 'object-contain bg-gray-100 dark:bg-gray-800 p-2' 
-                      : 'object-cover'
+                      : 'object-cover bg-white dark:bg-gray-800'
                   }`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -432,10 +432,10 @@ const Portfolio = () => {
                     <img 
                       src={getProjectImage(selectedProject)}
                       alt={selectedProject.title}
-                      className={`w-full h-72 group-hover:scale-105 transition-transform duration-500 ${
+                      className={`w-full h-80 group-hover:scale-105 transition-transform duration-500 ${
                         isMobileProject(selectedProject) 
                           ? 'object-contain bg-gray-100 dark:bg-gray-800 p-4' 
-                          : 'object-cover'
+                          : 'object-cover bg-white dark:bg-gray-800'
                       }`}
                     />
                     {/* Overlay with view indicator */}

@@ -226,6 +226,42 @@ html {
   transform: translateY(-30px);
 }
 
+/* Responsive animation adjustments */
+@media (max-width: 768px) {
+  .scroll-hidden,
+  .scroll-hidden-left,
+  .scroll-hidden-right,
+  .scroll-hidden-down {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  
+  /* Reduce transform distances on mobile */
+  .animate-fade-in-up,
+  .animate-fade-in-left,
+  .animate-fade-in-right,
+  .animate-slide-in-down {
+    animation-duration: 0.4s;
+  }
+  
+  /* Disable complex animations on very small screens */
+  @media (max-width: 480px) {
+    .animate-float,
+    .animate-pulse-slow,
+    .animate-bounce-gentle {
+      animation: none;
+    }
+    
+    .scroll-hidden,
+    .scroll-hidden-left,
+    .scroll-hidden-right,
+    .scroll-hidden-down {
+      transform: none;
+      opacity: 0.8;
+    }
+  }
+}
+
 /* Custom focus styles */
 .focus-visible:focus-visible {
   @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
