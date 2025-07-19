@@ -44,7 +44,6 @@ const About = () => {
                 key={index} 
                 className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm scroll-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg dark:hover:shadow-gray-700/50 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
                 data-scroll="fade-up"
-                style={{ animationDelay: `${index * 0.0}s` }}
               >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{edu.degree}</h3>
                 <h4 className="text-lg text-gray-700 dark:text-gray-300 mb-2">{edu.institution}</h4>
@@ -77,7 +76,6 @@ const About = () => {
                 key={category} 
                 className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm scroll-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg dark:hover:shadow-gray-700/50 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
                 data-scroll="fade-up"
-                style={{ animationDelay: `${index * 0.0}s` }}
               >
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">{category}</h3>
                 <div className="flex flex-wrap gap-2">
