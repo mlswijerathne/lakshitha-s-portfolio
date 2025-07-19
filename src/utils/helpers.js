@@ -119,3 +119,26 @@ export const downloadFile = (url, filename) => {
   link.click();
   document.body.removeChild(link);
 };
+
+// Mobile and performance detection utilities
+export const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+export const isLowPowerDevice = () => {
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  // Check for slow connection
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const isSlowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
+  
+  // Check for low-end devices (rough estimation)
+  const isLowEnd = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
+  
+  return prefersReducedMotion || isSlowConnection || isLowEnd;
+};
+
+export const shouldUseReducedAnimations = () => {
+  return isMobileDevice() && isLowPowerDevice();
+};

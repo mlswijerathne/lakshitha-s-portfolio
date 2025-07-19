@@ -76,17 +76,20 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Social icons with bounce animation */}
+          {/* Social icons with gentle animation - reduced on mobile */}
           <div className="mt-8 scroll-hidden" data-scroll="fade-up">
-            <div className="animate-bounce-gentle">
+            <div className="animate-bounce-gentle hidden md:block">
+              <SocialIcons />
+            </div>
+            <div className="md:hidden">
               <SocialIcons />
             </div>
           </div>
         </div>
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-gentle hidden sm:block">
+      {/* Scroll indicator - reduced animation */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block">
         <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-pulse"></div>
         </div>
