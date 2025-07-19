@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { useScrollAnimation } from './hooks/useScrollAnimation';
 import Header from './components/layout/Header';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Portfolio from './components/sections/Portfolio';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
+import AnimatedBackground from './components/common/AnimatedBackground';
 
 function App() {
+  useScrollAnimation();
+
   useEffect(() => {
     // Set the document title
     document.title = 'Lakshitha Wijerathne - Portfolio';
@@ -15,7 +19,8 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 relative">
+        <AnimatedBackground />
         <Header />
         <main>
           <Hero />

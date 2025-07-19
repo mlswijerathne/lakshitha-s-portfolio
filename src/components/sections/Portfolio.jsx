@@ -67,20 +67,24 @@ const Portfolio = () => {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Projects</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills in web development, 
-            mobile applications, and full-stack solutions.
-          </p>
+          <div className="scroll-hidden" data-scroll="fade-up">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Projects</h2>
+          </div>
+          <div className="scroll-hidden" data-scroll="fade-up">
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Here are some of my recent projects that showcase my skills in web development, 
+              mobile applications, and full-stack solutions.
+            </p>
+          </div>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {filterCategories.map((category) => (
+        <div className="flex flex-wrap justify-center gap-2 mb-12 scroll-hidden" data-scroll="fade-up">
+          {filterCategories.map((category, index) => (
             <button
               key={category.id}
               onClick={() => setActiveFilter(category.id)}
-              className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105 ${
                 activeFilter === category.id
                   ? 'text-white shadow-lg transform scale-105'
                   : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
@@ -103,10 +107,11 @@ const Portfolio = () => {
         
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, index) => (
             <div 
               key={project.id} 
-              className="group bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700"
+              className="group bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700 scroll-hidden"
+              data-scroll="fade-up"
             >
               {/* Project Image */}
               <div className="relative h-56 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-700 dark:to-gray-600 cursor-pointer group-hover:shadow-xl transition-all duration-300">
