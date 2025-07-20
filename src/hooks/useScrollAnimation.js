@@ -8,7 +8,14 @@ export const useScrollAnimation = () => {
       // Just make elements visible without animations
       const elements = document.querySelectorAll('[data-scroll]');
       elements.forEach((element) => {
-        element.classList.remove('scroll-hidden', 'scroll-hidden-left', 'scroll-hidden-right', 'scroll-hidden-down');
+        element.classList.remove(
+          'scroll-hidden', 
+          'scroll-hidden-left', 
+          'scroll-hidden-right', 
+          'scroll-hidden-down',
+          'scroll-hidden-up',
+          'scroll-hidden-scale'
+        );
         element.style.opacity = '1';
         element.style.transform = 'none';
       });
@@ -40,7 +47,14 @@ export const useScrollAnimation = () => {
               animatedElements.add(element);
               
               // Remove initial hidden classes
-              element.classList.remove('scroll-hidden', 'scroll-hidden-left', 'scroll-hidden-right', 'scroll-hidden-down');
+              element.classList.remove(
+                'scroll-hidden', 
+                'scroll-hidden-left', 
+                'scroll-hidden-right', 
+                'scroll-hidden-down',
+                'scroll-hidden-up',
+                'scroll-hidden-scale'
+              );
               
               // Add appropriate animation class
               switch (animationType) {
@@ -55,6 +69,18 @@ export const useScrollAnimation = () => {
                   break;
                 case 'slide-down':
                   element.classList.add('animate-slide-in-down');
+                  break;
+                case 'slide-up':
+                  element.classList.add('animate-slide-in-up');
+                  break;
+                case 'slide-left':
+                  element.classList.add('animate-slide-in-left');
+                  break;
+                case 'slide-right':
+                  element.classList.add('animate-slide-in-right');
+                  break;
+                case 'scale-bounce':
+                  element.classList.add('animate-scale-in-bounce');
                   break;
                 default:
                   element.classList.add('animate-fade-in-up');
