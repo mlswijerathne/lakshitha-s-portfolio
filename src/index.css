@@ -16,6 +16,15 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Mobile specific body optimizations */
+@media (max-width: 768px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none; /* Prevent bounce scrolling */
+    touch-action: pan-y; /* Only allow vertical scrolling */
+  }
+}
+
 #root {
   width: 100%;
   min-height: 100vh;
@@ -26,9 +35,15 @@ html, body {
   color-scheme: dark;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling - disabled on mobile for performance */
 html {
   scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto; /* Disable smooth scrolling on mobile */
+  }
 }
 
 /* Custom scrollbar */
@@ -148,6 +163,15 @@ html {
   }
 }
 
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+  }
+}
+
 @keyframes typing {
   from {
     width: 0;
@@ -198,6 +222,10 @@ html {
   animation: bounce-gentle 2s infinite;
 }
 
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
 .animate-typing {
   overflow: hidden;
   border-right: 2px solid;
@@ -209,25 +237,25 @@ html {
 .scroll-hidden {
   opacity: 0;
   transform: translateY(20px);
-  will-change: transform, opacity;
+  will-change: auto; /* Removed will-change for better mobile performance */
 }
 
 .scroll-hidden-left {
   opacity: 0;
   transform: translateX(-20px);
-  will-change: transform, opacity;
+  will-change: auto;
 }
 
 .scroll-hidden-right {
   opacity: 0;
   transform: translateX(20px);
-  will-change: transform, opacity;
+  will-change: auto;
 }
 
 .scroll-hidden-down {
   opacity: 0;
   transform: translateY(-20px);
-  will-change: transform, opacity;
+  will-change: auto;
 }
 
 /* Mobile touch optimizations */
@@ -236,17 +264,22 @@ html {
   * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+  }
+  
+  /* Prevent text selection on touch devices for better UX */
+  .no-select {
     -webkit-user-select: none;
     user-select: none;
   }
   
-  /* Reduce animation intensity on touch devices */
+  /* Greatly reduce animation intensity on touch devices */
   .animate-fade-in-up,
   .animate-fade-in-left,
   .animate-fade-in-right,
   .animate-slide-in-down {
-    animation-duration: 0.3s;
-    animation-timing-function: ease-out;
+    animation-duration: 0.2s !important;
+    animation-timing-function: ease-out !important;
+    animation-fill-mode: both !important;
   }
   
   /* Minimal transforms for scroll elements */
@@ -254,20 +287,28 @@ html {
   .scroll-hidden-left,
   .scroll-hidden-right,
   .scroll-hidden-down {
-    transform: translateY(10px);
+    transform: translateY(5px) !important; /* Much smaller transform */
     opacity: 0;
   }
   
   .scroll-hidden-left {
-    transform: translateX(-10px);
+    transform: translateX(-5px) !important;
   }
   
   .scroll-hidden-right {
-    transform: translateX(10px);
+    transform: translateX(5px) !important;
   }
   
   .scroll-hidden-down {
-    transform: translateY(-10px);
+    transform: translateY(-5px) !important;
+  }
+  
+  /* Disable complex animations entirely on touch devices */
+  .animate-float,
+  .animate-pulse-slow,
+  .animate-bounce-gentle,
+  .animate-gradient-x {
+    animation: none !important;
   }
 }
 
@@ -290,38 +331,47 @@ html {
 
 /* Responsive animation adjustments */
 @media (max-width: 768px) {
+  /* Force hardware acceleration for better performance */
+  body {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
   .scroll-hidden,
   .scroll-hidden-left,
   .scroll-hidden-right,
   .scroll-hidden-down {
-    transform: translateY(10px); /* Reduced transform distance */
+    transform: translateY(5px) !important; /* Much smaller transform distance */
     opacity: 0;
   }
   
-  /* Faster, smoother animations on mobile */
+  /* Much faster, smoother animations on mobile */
   .animate-fade-in-up,
   .animate-fade-in-left,
   .animate-fade-in-right,
   .animate-slide-in-down {
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: ease-out;
+    animation-duration: 0.2s !important;
+    animation-fill-mode: both !important;
+    animation-timing-function: ease-out !important;
   }
   
-  /* Disable complex animations on very small screens */
+  /* Disable resource-intensive animations on mobile */
   @media (max-width: 480px) {
     .animate-float,
     .animate-pulse-slow,
-    .animate-bounce-gentle {
-      animation: none;
+    .animate-bounce-gentle,
+    .animate-gradient-x,
+    .animate-typing {
+      animation: none !important;
     }
     
-    /* Minimal animations for very small screens */
+    /* Extremely minimal animations for very small screens */
     .scroll-hidden,
     .scroll-hidden-left,
     .scroll-hidden-right,
     .scroll-hidden-down {
-      transform: translateY(5px); /* Very minimal transform */
+      transform: none !important; /* No transform at all on very small screens */
       opacity: 0;
     }
     
@@ -329,18 +379,26 @@ html {
     .animate-fade-in-left,
     .animate-fade-in-right,
     .animate-slide-in-down {
-      animation-duration: 0.2s;
+      animation-duration: 0.1s !important;
     }
   }
   
-  /* Reduce motion for users who prefer it */
+  /* Completely disable animations for users who prefer reduced motion */
   @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
     .scroll-hidden,
     .scroll-hidden-left,
     .scroll-hidden-right,
     .scroll-hidden-down {
-      transform: none;
-      opacity: 0.9;
+      transform: none !important;
+      opacity: 1 !important;
     }
     
     .animate-fade-in-up,
@@ -349,10 +407,11 @@ html {
     .animate-slide-in-down,
     .animate-float,
     .animate-pulse-slow,
-    .animate-bounce-gentle {
-      animation: none;
-      opacity: 1;
-      transform: none;
+    .animate-bounce-gentle,
+    .animate-gradient-x {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 }

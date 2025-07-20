@@ -10,11 +10,38 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
+    let ticking = false;
+    let scrollTimeout = null;
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Use throttled scroll for mobile devices
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    const throttledHandleScroll = () => {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(handleScroll, isMobile ? 32 : 16);
+    };
+
+    // Use passive listener for better performance
+    window.addEventListener('scroll', isMobile ? throttledHandleScroll : handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', isMobile ? throttledHandleScroll : handleScroll);
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+    };
   }, []);
 
   const scrollToSection = (href) => {
@@ -32,6 +59,11 @@ const Header = () => {
           ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm' 
           : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm'
       }`}
+      style={{
+        willChange: 'auto',
+        transform: 'translateZ(0)', // Force hardware acceleration without will-change
+        backfaceVisibility: 'hidden' // Prevent flickering on mobile
+      }}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">

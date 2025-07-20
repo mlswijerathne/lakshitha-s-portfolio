@@ -16,7 +16,9 @@ export const useScrollAnimation = () => {
     }
 
     let ticking = false;
+    let scrollTimeout = null;
     const animatedElements = new Set(); // Track already animated elements
+    const isMobile = isMobileDevice();
     
     const handleScroll = () => {
       if (!ticking) {
@@ -29,7 +31,7 @@ export const useScrollAnimation = () => {
             }
             
             const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = isMobileDevice() ? 100 : 150; // Smaller threshold for mobile
+            const elementVisible = isMobile ? 80 : 150; // Smaller threshold for mobile
             
             if (elementTop < window.innerHeight - elementVisible) {
               const animationType = element.getAttribute('data-scroll');
@@ -65,9 +67,9 @@ export const useScrollAnimation = () => {
       }
     };
 
-    // Throttle function for better performance
-    let scrollTimeout;
-    const throttleDelay = isMobileDevice() ? 32 : 16; // Slower throttle on mobile
+    // More aggressive throttling for mobile devices
+    const throttleDelay = isMobile ? 50 : 16; // Much slower throttle on mobile
+    
     const throttledHandleScroll = () => {
       if (scrollTimeout) {
         clearTimeout(scrollTimeout);
@@ -79,9 +81,11 @@ export const useScrollAnimation = () => {
     handleScroll();
     
     // Use passive listener for better performance
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    const scrollHandler = isMobile ? throttledHandleScroll : handleScroll;
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    
     return () => {
-      window.removeEventListener('scroll', throttledHandleScroll);
+      window.removeEventListener('scroll', scrollHandler);
       if (scrollTimeout) {
         clearTimeout(scrollTimeout);
       }

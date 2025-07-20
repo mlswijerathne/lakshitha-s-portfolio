@@ -122,7 +122,8 @@ export const downloadFile = (url, filename) => {
 
 // Mobile and performance detection utilities
 export const isMobileDevice = () => {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+         (window.innerWidth <= 768 && 'ontouchstart' in window);
 };
 
 export const isLowPowerDevice = () => {
@@ -131,14 +132,50 @@ export const isLowPowerDevice = () => {
   
   // Check for slow connection
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  const isSlowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
+  const isSlowConnection = connection && (
+    connection.effectiveType === 'slow-2g' || 
+    connection.effectiveType === '2g' ||
+    connection.saveData === true
+  );
   
   // Check for low-end devices (rough estimation)
   const isLowEnd = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
   
-  return prefersReducedMotion || isSlowConnection || isLowEnd;
+  // Check for older mobile devices with potentially weaker GPUs
+  const isOldMobile = /iPhone [1-6]|Android 2\.|Android 3\.|Android 4\.[0-3]/i.test(navigator.userAgent);
+  
+  return prefersReducedMotion || isSlowConnection || isLowEnd || isOldMobile;
 };
 
 export const shouldUseReducedAnimations = () => {
-  return isMobileDevice() && isLowPowerDevice();
+  return isMobileDevice() || isLowPowerDevice();
+};
+
+// Enhanced throttle for mobile devices
+export const mobileThrottle = (func, limit) => {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, isMobileDevice() ? limit * 2 : limit);
+    }
+  };
+};
+
+// Enhanced debounce for mobile devices
+export const mobileDebounce = (func, wait) => {
+  let timeout;
+  const actualWait = isMobileDevice() ? wait * 1.5 : wait;
+  
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, actualWait);
+  };
 };
