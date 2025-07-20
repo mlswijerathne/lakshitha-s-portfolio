@@ -93,8 +93,8 @@ export const useScrollAnimation = () => {
       }
     };
 
-    // More aggressive throttling for mobile devices
-    const throttleDelay = isMobile ? 50 : 16; // Much slower throttle on mobile
+    // More gentle throttling for mobile devices - allow some animation
+    const throttleDelay = isMobile ? 40 : 16; // Less aggressive throttle on mobile
     
     const throttledHandleScroll = () => {
       if (scrollTimeout) {

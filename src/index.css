@@ -350,7 +350,7 @@ html {
     user-select: none;
   }
   
-  /* Greatly reduce animation intensity on touch devices */
+  /* Gentle animations for touch devices - very subtle */
   .animate-fade-in-up,
   .animate-fade-in-left,
   .animate-fade-in-right,
@@ -359,40 +359,55 @@ html {
   .animate-slide-in-left,
   .animate-slide-in-right,
   .animate-scale-in-bounce {
-    animation-duration: 0.2s !important;
+    animation-duration: 0.3s !important; /* Slightly longer for visibility */
     animation-timing-function: ease-out !important;
     animation-fill-mode: both !important;
   }
   
-  /* Minimal transforms for scroll elements */
+  /* Very minimal transforms for scroll elements on mobile */
   .scroll-hidden,
   .scroll-hidden-left,
   .scroll-hidden-right,
   .scroll-hidden-down,
   .scroll-hidden-up,
   .scroll-hidden-scale {
-    transform: translateY(5px) !important; /* Much smaller transform */
+    transform: translateY(8px) !important; /* Slightly larger for mobile visibility */
     opacity: 0;
   }
   
   .scroll-hidden-left {
-    transform: translateX(-5px) !important;
+    transform: translateX(-8px) !important;
   }
   
   .scroll-hidden-right {
-    transform: translateX(5px) !important;
+    transform: translateX(8px) !important;
   }
   
   .scroll-hidden-down {
-    transform: translateY(-5px) !important;
+    transform: translateY(-8px) !important;
   }
   
-  /* Disable complex animations entirely on touch devices */
+  .scroll-hidden-up {
+    transform: translateY(10px) !important;
+  }
+  
+  .scroll-hidden-scale {
+    transform: scale(0.95) !important;
+  }
+  
+  /* Keep some animations but make them very gentle */
   .animate-float,
-  .animate-pulse-slow,
-  .animate-bounce-gentle,
   .animate-gradient-x {
     animation: none !important;
+  }
+  
+  /* Allow gentle pulse and bounce on mobile */
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite !important;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounce-gentle 3s infinite !important;
   }
 }
 
@@ -428,11 +443,11 @@ html {
   .scroll-hidden-down,
   .scroll-hidden-up,
   .scroll-hidden-scale {
-    transform: translateY(5px) !important; /* Much smaller transform distance */
+    transform: translateY(8px) !important; /* Slightly larger for mobile visibility */
     opacity: 0;
   }
   
-  /* Much faster, smoother animations on mobile */
+  /* Gentle, visible animations on mobile */
   .animate-fade-in-up,
   .animate-fade-in-left,
   .animate-fade-in-right,
@@ -441,7 +456,7 @@ html {
   .animate-slide-in-left,
   .animate-slide-in-right,
   .animate-scale-in-bounce {
-    animation-duration: 0.2s !important;
+    animation-duration: 0.4s !important; /* Longer duration for mobile visibility */
     animation-fill-mode: both !important;
     animation-timing-function: ease-out !important;
   }
@@ -449,27 +464,39 @@ html {
   /* Disable resource-intensive animations on mobile */
   @media (max-width: 480px) {
     .animate-float,
-    .animate-pulse-slow,
-    .animate-bounce-gentle,
-    .animate-gradient-x,
-    .animate-typing {
+    .animate-gradient-x {
       animation: none !important;
     }
     
-    /* Extremely minimal animations for very small screens */
+    /* Keep gentle animations for very small screens */
     .scroll-hidden,
     .scroll-hidden-left,
     .scroll-hidden-right,
-    .scroll-hidden-down {
-      transform: none !important; /* No transform at all on very small screens */
+    .scroll-hidden-down,
+    .scroll-hidden-up,
+    .scroll-hidden-scale {
+      transform: translateY(6px) !important; /* Minimal but visible transform */
       opacity: 0;
     }
     
     .animate-fade-in-up,
     .animate-fade-in-left,
     .animate-fade-in-right,
-    .animate-slide-in-down {
-      animation-duration: 0.1s !important;
+    .animate-slide-in-down,
+    .animate-slide-in-up,
+    .animate-slide-in-left,
+    .animate-slide-in-right,
+    .animate-scale-in-bounce {
+      animation-duration: 0.3s !important;
+    }
+    
+    /* Allow very gentle background animations */
+    .animate-pulse-slow {
+      animation: pulse-slow 5s ease-in-out infinite !important;
+    }
+    
+    .animate-bounce-gentle {
+      animation: bounce-gentle 4s infinite !important;
     }
   }
   
@@ -486,7 +513,9 @@ html {
     .scroll-hidden,
     .scroll-hidden-left,
     .scroll-hidden-right,
-    .scroll-hidden-down {
+    .scroll-hidden-down,
+    .scroll-hidden-up,
+    .scroll-hidden-scale {
       transform: none !important;
       opacity: 1 !important;
     }
@@ -495,6 +524,10 @@ html {
     .animate-fade-in-left,
     .animate-fade-in-right,
     .animate-slide-in-down,
+    .animate-slide-in-up,
+    .animate-slide-in-left,
+    .animate-slide-in-right,
+    .animate-scale-in-bounce,
     .animate-float,
     .animate-pulse-slow,
     .animate-bounce-gentle,

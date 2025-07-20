@@ -47,11 +47,13 @@ const Hero = () => {
         backfaceVisibility: 'hidden' // Prevent flickering
       }}
     >
-      {/* Animated background elements - hidden on mobile */}
+      {/* Animated background elements - show gentle animations on mobile */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/5 rounded-full animate-float hidden lg:block"></div>
         <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full animate-float hidden lg:block"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/5 rounded-full animate-pulse-slow hidden md:block"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/5 rounded-full animate-pulse-slow hidden sm:block lg:hidden"></div>
+        {/* Mobile-friendly gentle background animation */}
+        <div className="absolute top-1/3 left-1/3 w-48 h-48 bg-blue-500/3 rounded-full animate-pulse-slow block sm:hidden"></div>
       </div>
       
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -112,10 +114,17 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Scroll indicator - hidden on mobile */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:block">
+      {/* Scroll indicator - with gentle mobile animation */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block">
         <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
+      
+      {/* Mobile scroll indicator - simpler animation */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 block sm:hidden">
+        <div className="w-5 h-8 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-gray-400 dark:bg-gray-600 rounded-full mt-1 animate-bounce-gentle"></div>
         </div>
       </div>
     </section>
