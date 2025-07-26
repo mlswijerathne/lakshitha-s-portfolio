@@ -86,9 +86,9 @@ const Contact = () => {
           <div className="scroll-hidden-left" data-scroll="fade-left">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Let's Connect</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              I'm actively seeking internship opportunities and would love to discuss 
-              how I can contribute to your team.
+              Feel free to reach out to discuss collaborations or opportunities.
             </p>
+
 
             <div className="space-y-6">
               <div className="flex items-center">

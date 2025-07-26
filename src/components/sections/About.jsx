@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { personalInfo, skills, education, achievements } from '../../data/portfolioData';
 import SocialIcons from '../common/SocialIcons';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import myselfImage from '../../assets/myself.PNG';
+import myselfImage from '../../assets/myself.jpg';
 
 const About = () => {
   // Initialize scroll animations

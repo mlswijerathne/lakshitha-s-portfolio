@@ -7,7 +7,7 @@ export const personalInfo = {
   github: "https://github.com/lakshitha-wijerathne",
   linkedin: "https://linkedin.com/in/lakshitha-wijerathne",
   medium: "https://medium.com/@lakshitha-wijerathne",
-  objective: "I'm a computer science student with a strong interest in mathematics, data structures and algorithms as well as both backend and frontend development. I've worked on several projects that helped me build real world coding experience and Problem-Solving skills. I'm now looking for an internship where I can continue learning, apply what I know in a practical setting and grow as a developer.",
+  objective: "I'm a computer science student with a strong interest in mathematics, data structures and algorithms, as well as both backend and frontend development. I've worked on several projects that have helped me build real-world coding experience and problem-solving skills. I look forward to applying my knowledge, continuing to learn, and growing as a developer through new opportunities and collaborations",
   experience: "3+ Years",
   completedProjects: "6+",
   happyCustomers: "98%"
