@@ -9,6 +9,7 @@ import WasteImg from '../../assets/Waste.png';
 import FinanceImg from '../../assets/Finance.png';
 import FoodImg from '../../assets/Food.png';
 import OasisImg from '../../assets/Oasis.png';
+import LexicalImg from '../../assets/lexical.png';
 
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -42,7 +43,8 @@ const Portfolio = () => {
       'Waste Management System': WasteImg,
       'Finance Management System': FinanceImg,
       'Food Order App': FoodImg,
-      'Oasis Protocol Platform': OasisImg
+      'Oasis Protocol Platform': OasisImg,
+      'Lexical Analyzer': LexicalImg
     };
     return imageMap[project.title] || OasisImg;
   };
@@ -193,7 +195,7 @@ const Portfolio = () => {
                 </div>
 
                 {/* Project Category */}
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-3 flex-wrap">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                     project.category === 'web' 
                       ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' 
@@ -201,6 +203,14 @@ const Portfolio = () => {
                   }`}>
                     {project.category === 'web' ? '🌐 Web App' : '📱 Mobile App'}
                   </span>
+                  {project.demo && (
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 flex items-center gap-1">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      </svg>
+                      Live Demo
+                    </span>
+                  )}
                 </div>
                 
                 {/* Project Description */}
@@ -289,21 +299,52 @@ const Portfolio = () => {
 
                 {/* View Project Button */}
                 <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-                  <button 
-                    onClick={() => setSelectedProject(project)}
-                    className="w-full text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl"
-                    style={{
-                      backgroundColor: '#222831'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = '#1a1f25';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = '#222831';
-                    }}
-                  >
-                    View Details
-                  </button>
+                  {project.demo ? (
+                    <div className="grid grid-cols-2 gap-2">
+                      <button 
+                        onClick={() => setSelectedProject(project)}
+                        className="text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 py-2 px-4 rounded-lg transition-all duration-300 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 shadow-md hover:shadow-lg"
+                      >
+                        Details
+                      </button>
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl"
+                        style={{
+                          backgroundColor: '#222831'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#1a1f25';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = '#222831';
+                        }}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        Live Demo
+                      </a>
+                    </div>
+                  ) : (
+                    <button 
+                      onClick={() => setSelectedProject(project)}
+                      className="w-full text-white py-2 px-4 rounded-lg transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl"
+                      style={{
+                        backgroundColor: '#222831'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.backgroundColor = '#1a1f25';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.backgroundColor = '#222831';
+                      }}
+                    >
+                      View Details
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -488,7 +529,7 @@ const Portfolio = () => {
                 </div>
 
                 {/* GitHub Link */}
-                <div className="flex justify-end">
+                <div className="flex justify-end gap-3">
                   <a
                     href={selectedProject.github}
                     target="_blank"
@@ -500,6 +541,28 @@ const Portfolio = () => {
                     </svg>
                     View on GitHub
                   </a>
+                  {selectedProject.demo && (
+                    <a
+                      href={selectedProject.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-white px-6 py-3 rounded-lg transition-colors font-medium shadow-lg hover:shadow-xl"
+                      style={{
+                        backgroundColor: '#222831'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#1a1f25';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = '#222831';
+                      }}
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      View Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

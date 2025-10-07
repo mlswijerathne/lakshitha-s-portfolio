@@ -17,9 +17,9 @@ export const education = [
   {
     degree: "BSC (Hons) in Computer Science - UGC (Reading)",
     institution: "NSBM Green University - Sri Lanka",
-    gpa: "3.61",
+    gpa: "3.615",
     duration: "Current",
-    description: "Current GPA – 3.61"
+    description: "Current GPA – 3.615"
   },
   {
     degree: "G.C.E. O/L and A/L Examination", 
@@ -34,25 +34,42 @@ export const skills = {
     { name: "HTML", level: 90 },
     { name: "CSS", level: 85 },
     { name: "JavaScript", level: 88 },
+    { name: "TypeScript", level: 82 },
     { name: "React.js", level: 85 },
+    { name: "Next.js", level: 80 },
     { name: "Java", level: 80 },
+    { name: "C", level: 78 },
     { name: "C#", level: 75 },
     { name: "Python", level: 82 },
     { name: "Dart/Flutter", level: 78 },
     { name: "ASP.NET", level: 75 },
     { name: "Firebase", level: 80 },
     { name: "SQL Server", level: 85 },
-    { name: "Git/GitHub", level: 88 }
+    { name: "MySQL", level: 80 },
+    { name: "PostgreSQL", level: 70 },
+    { name: "RESTful API", level: 80 },
+    { name: "postman", level: 88 },
+    { name: "VScode", level: 90 },
+    { name: "Intellij Idea", level: 80 },
+    { name: "Canva", level: 70 },
+    { name: "Figma", level: 70 },
+    { name: "Git/GitHub", level: 88 },
+    { name: "Docker", level: 70 },
+    { name: "Jenkins", level: 65 },
+    { name: "Jira", level: 75 },
+    { name: "Confluence", level: 70 },
+    { name: "Vite", level: 85 },
+    { name: "pnpm", level: 80 }
   ],
   categories: {
-    "Programming Languages": ["HTML", "CSS", "JavaScript", "Java", "C", "C#", "Python", "Dart"],
-    "Frameworks": ["ASP .NET", "Python Flask", "React.js"],
-    "Web Development Technologies": ["RESTfull API", "REST API", "Web API"],
+    "Programming Languages": ["HTML", "CSS", "JavaScript", "TypeScript", "Java", "C", "C#", "Python", "Dart"],
+    "Frameworks": ["ASP .NET", "Python Flask", "React.js", "Next.js", "Flutter", "Tailwind CSS"],
+    "Web Development Technologies": ["RESTfull API", "REST API", "Web API", "Axios", "JWT", "Postman", "Docker"],
     "Mobile Application Development Technologies & Frameworks": ["Flutter", "Firebase", "API Integration"],
-    "Tools": ["VScode", "Intellij Idea"],
-    "Database Development": ["Firebase", "SQL Server Management", "MySQL"],
-    "Version Control": ["Git", "GitHub"],
-    "Concepts": ["Software Development Life Cycle (SDLC)", "Object-Oriented Programming (OOP)", "Mobile App Development Principles", "Agile Methodology"],
+    "Tools": ["VScode", "Intellij Idea", "Visual Studio", "Google Colab", "Jupyter Notebook", "Docker", "Jenkins", "Vite", "pnpm", "ESLint"],
+    "Database Development": ["Firebase", "SQL Server Management", "MySQL", "PostgreSQL"],
+    "Version Control": ["Git", "GitHub", "Azure DevOps"],
+    "Concepts": ["Software Development Life Cycle (SDLC)", "Object-Oriented Programming (OOP)", "Mobile App Development Principles", "Agile Methodology", "Jira", "Confluence"],
     "UI/UX": ["Canva", "Figma"],
     "Soft Skills": ["Leadership", "Time management", "Communication", "Self-Learner", "Problem-Solving", "Time Management", "Team Work"]
   }
@@ -97,6 +114,7 @@ export const projects = [
     description: "Developed a comprehensive web platform featuring AI-powered financial advice, real-time income/expense tracking and visualization, subscription management, savings goal setting, secure authentication, and automated payment reminders with personalized financial insights.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "React Router", "Joi (data validation)", "Axios"],
     github: "https://github.com/mlswijerathne/financeManagement/blob/test/README.md",
+    demo: "http://152.67.3.153/",
     category: "web",
     type: "Group Project",
     contribution: "Developed and integrated RESTful APIs between the frontend and backend using Axios for seamless data flow",
@@ -121,6 +139,17 @@ export const projects = [
     github: "https://github.com/mlswijerathne/oasis-protocol-platform/blob/main/README.md", // Change if actual repo differs
     category: "web",
     image: "/project-oasis.jpg"
+  },
+  {
+    id: 7,
+    title: "Lexical Analyzer",
+    year: "2025",
+    description: "A modern web application for lexical analysis and tokenization, featuring an interactive editor with syntax highlighting, comprehensive token analysis, history management for tracking previous sessions, PDF export capabilities for professional reports, and a fully responsive design optimized for both desktop and mobile devices.",
+    technologies: ["React 19", "TypeScript", "Vite 7", "Tailwind CSS 4", "ESLint", "pnpm"],
+    github: "https://github.com/mlswijerathne/lexical-analyzer",
+    demo: "https://lexical-analyzer-delta.vercel.app",
+    category: "web",
+    image: "/project-lexical.png"
   },
 
 
@@ -161,6 +190,30 @@ export const achievements = [
     organization: "IEEE Student Branch NSBM",
     achievement: "Secured 5th place as Team 404_NotFound member",
     year: "July 2025"
+  }
+];
+
+export const certifications = [
+  {
+    title: "Learn by Doing - Prompt Engineering 101",
+    issuer: "KodeKloud",
+    issueDate: "September 2025",
+    credentialId: "7e82fdfd-34a6-4d97-835d-425f4ba4af99",
+    credentialUrl: "https://kodekloud.com/certificate-verification/7e82fdfd-34a6-4d97-835d-425f4ba4af99",
+    skills: ["Prompt Engineering", "AI"]
+  },
+  {
+    title: "Back-End Web Development with .NET",
+    issuer: "LinkedIn",
+    issueDate: "December 2024",
+    skills: ["Back-End Web Development", ".NET Framework"]
+  },
+  {
+    title: "Postman API Fundamentals Student Expert",
+    issuer: "Canvas Credentials (Badgr)",
+    issueDate: "November 2024",
+    credentialId: "6744375943453f06d99008e2",
+    skills: ["API Development", "Postman", "RESTful APIs"]
   }
 ];
 

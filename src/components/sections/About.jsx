@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { personalInfo, skills, education, achievements } from '../../data/portfolioData';
 import SocialIcons from '../common/SocialIcons';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import myselfImage from '../../assets/myself.jpg';
+import Lakshitha from '../../assets/Lakshitha.jpg';
 
 const About = () => {
   // Initialize scroll animations
@@ -40,7 +40,7 @@ const About = () => {
                 <div className="relative mb-6">
                   <div className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-lg ring-4 ring-blue-100 dark:ring-blue-900/50 transition-all duration-300 hover:ring-blue-200 dark:hover:ring-blue-800">
                     <img 
-                      src={myselfImage}
+                      src={Lakshitha}
                       alt="Lakshitha Wijerathne - Profile Photo" 
                       className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
                       style={{ objectPosition: 'center 30%' }} // Adjust percentages as needed

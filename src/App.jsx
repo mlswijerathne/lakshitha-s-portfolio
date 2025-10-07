@@ -5,6 +5,7 @@ import Header from './components/layout/Header';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Portfolio from './components/sections/Portfolio';
+import Certifications from './components/sections/Certifications';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
 import AnimatedBackground from './components/common/AnimatedBackground';
@@ -26,6 +27,7 @@ function App() {
           <Hero />
           <About />
           <Portfolio />
+          <Certifications />
           <Contact />
         </main>
         <Footer />
