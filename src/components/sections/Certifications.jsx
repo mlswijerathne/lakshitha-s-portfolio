@@ -49,9 +49,16 @@ const Certifications = () => {
                     />
                   </svg>
                 </div>
-                <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full font-medium">
-                  {cert.issueDate}
-                </span>
+                <div className="flex flex-col items-end gap-1">
+                  <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full font-medium">
+                    {cert.issueDate}
+                  </span>
+                  {cert.expiryDate && (
+                    <span className="text-xs text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full font-medium">
+                      Expires: {cert.expiryDate}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {/* Certificate Title */}
@@ -76,6 +83,15 @@ const Certifications = () => {
                 </svg>
                 <p className="text-gray-700 dark:text-gray-300 font-medium">{cert.issuer}</p>
               </div>
+
+              {/* Description */}
+              {cert.description && (
+                <div className="mb-4">
+                  <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
+                    {cert.description}
+                  </p>
+                </div>
+              )}
 
               {/* Credential ID */}
               {cert.credentialId && (

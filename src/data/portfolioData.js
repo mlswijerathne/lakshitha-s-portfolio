@@ -195,6 +195,23 @@ export const achievements = [
 
 export const certifications = [
   {
+    title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+    issuer: "Oracle",
+    issueDate: "October 2025",
+    expiryDate: "October 2027",
+    credentialId: "323322023OCI25AICFA",
+    description: "Official eCertificate issued by Oracle, recognizing the successful completion of the Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate certification. Demonstrates foundational knowledge in AI/ML concepts, data preprocessing, model evaluation, and the use of OCI Data Science services for building and deploying AI solutions.",
+    skills: ["Artificial Intelligence (AI)", "Machine Learning", "Oracle Cloud Infrastructure", "Data Science", "Cloud Computing"]
+  },
+  {
+    title: "Docker Training Course for the Absolute Beginner",
+    issuer: "KodeKloud",
+    issueDate: "October 2025",
+    credentialId: "8cb36898-661b-4fc0-92fb-fb26edb7fd82",
+    credentialUrl: "https://kodekloud.com/certificate-verification/8cb36898-661b-4fc0-92fb-fb26edb7fd82",
+    skills: ["Docker", "Containerization", "DevOps"]
+  },
+  {
     title: "Learn by Doing - Prompt Engineering 101",
     issuer: "KodeKloud",
     issueDate: "September 2025",
