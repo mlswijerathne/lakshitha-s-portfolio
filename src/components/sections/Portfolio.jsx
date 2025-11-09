@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { projects } from '../../data/portfolioData';
 import { useTheme } from '../../context/ThemeContext';
 
-// Import images
 import AuctionImg from '../../assets/Auction.png';
 import InventryImg from '../../assets/Inventry.png';
 import WasteImg from '../../assets/Waste.png';
