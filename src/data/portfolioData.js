@@ -200,6 +200,7 @@ export const certifications = [
     issueDate: "October 2025",
     expiryDate: "October 2027",
     credentialId: "323322023OCI25AICFA",
+    credentialUrl: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=2CE2289737F138E3D8CF83C9C3E691D25031A8B3DC8FF90FBAE2949D52B5896D",
     description: "Official eCertificate issued by Oracle, recognizing the successful completion of the Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate certification. Demonstrates foundational knowledge in AI/ML concepts, data preprocessing, model evaluation, and the use of OCI Data Science services for building and deploying AI solutions.",
     skills: ["Artificial Intelligence (AI)", "Machine Learning", "Oracle Cloud Infrastructure", "Data Science", "Cloud Computing"]
   },
@@ -223,6 +224,7 @@ export const certifications = [
     title: "Back-End Web Development with .NET",
     issuer: "LinkedIn",
     issueDate: "December 2024",
+    credentialUrl: "https://www.linkedin.com/learning/certificates/aa0fe4347e51431a9a4297f13124a0fea87f040201c2c4457dd81bcf799910ef",
     skills: ["Back-End Web Development", ".NET Framework"]
   },
   {
@@ -230,6 +232,7 @@ export const certifications = [
     issuer: "Canvas Credentials (Badgr)",
     issueDate: "November 2024",
     credentialId: "6744375943453f06d99008e2",
+    credentialUrl: "https://badges.parchment.com/public/assertions/W6ixtovrSTadv0h2dc-6iA",
     skills: ["API Development", "Postman", "RESTful APIs"]
   }
 ];
