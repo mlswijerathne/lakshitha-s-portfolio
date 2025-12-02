@@ -48,7 +48,7 @@ const Portfolio = () => {
     return imageMap[project.title] || OasisImg;
   };
 
-  // Check if a project is a mobile application
+
   const isMobileProject = (project) => {
     return project.category === 'mobile' || project.title === 'Food Order App';
   };
