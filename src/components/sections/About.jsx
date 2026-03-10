@@ -9,23 +9,27 @@ const About = () => {
   useScrollAnimation();
 
   return (
-    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="about" className="py-24 bg-gray-50/50 dark:bg-gray-800/50">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* About Me Section */}
         <div className="mb-20">
           <div className="scroll-hidden" data-scroll="fade-up">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">About Me</h2>
+            <div className="flex items-center gap-4 justify-center mb-12">
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">About Me</h2>
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
             {/* Main About Content - Takes up 2/3 of the space */}
             <div className="lg:col-span-2 scroll-hidden-left" data-scroll="fade-left">
-              <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transform transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-700/50 hover:scale-[1.01]">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400">Hello, I'm Lakshitha</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-8 text-lg mb-6 transition-all duration-300 hover:text-gray-700 dark:hover:text-gray-300">
+              <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200/80 dark:border-gray-700/80 transition-all duration-300 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600">
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Hello, I'm Lakshitha</h3>
+                <p className="text-gray-500 dark:text-gray-400 leading-8 text-lg mb-6">
                   {personalInfo.objective}
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 leading-8 transition-all duration-300 hover:text-gray-700 dark:hover:text-gray-300">
+                <p className="text-gray-500 dark:text-gray-400 leading-8">
                   I'm passionate about creating innovative solutions and continuously learning new technologies 
                   to solve real-world problems. My journey in software development has been driven by curiosity 
                   and a desire to make a meaningful impact through code.
@@ -35,7 +39,7 @@ const About = () => {
 
             {/* Profile Photo Panel - Takes up 1/3 of the space */}
             <div className="lg:col-span-1 scroll-hidden-right" data-scroll="fade-right">
-              <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 h-full flex flex-col items-center justify-center">
+              <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200/80 dark:border-gray-700/80 h-full flex flex-col items-center justify-center">
                 
                 <div className="relative mb-6">
                   <div className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-lg ring-4 ring-blue-100 dark:ring-blue-900/50 transition-all duration-300 hover:ring-blue-200 dark:hover:ring-blue-800">
@@ -62,13 +66,17 @@ const About = () => {
         {/* Education Section */}
         <div className="mb-20">
           <div className="scroll-hidden" data-scroll="fade-up">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">Education</h2>
+            <div className="flex items-center gap-4 justify-center mb-12">
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Education</h2>
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+            </div>
           </div>
           <div className="space-y-6">
             {education.map((edu, index) => (
               <div 
                 key={index} 
-                className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm scroll-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-lg dark:hover:shadow-gray-700/50 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
+                className="bg-white dark:bg-gray-900 p-8 rounded-2xl scroll-hidden transition-all duration-300 border border-gray-200/80 dark:border-gray-700/80 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600"
                 data-scroll="fade-up"
               >
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
@@ -101,20 +109,24 @@ const About = () => {
         {/* Skills Section */}
         <div className="mb-16">
           <div className="scroll-hidden" data-scroll="fade-up">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">Skills & Technologies</h2>
+            <div className="flex items-center gap-4 justify-center mb-12">
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Skills & Technologies</h2>
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {Object.entries(skills.categories).map(([category, skillList], index) => (
               <div 
                 key={category} 
-                className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm scroll-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-lg dark:hover:shadow-gray-700/50 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600 group"
+                className="bg-white dark:bg-gray-900 p-6 rounded-2xl scroll-hidden transition-all duration-300 border border-gray-200/80 dark:border-gray-700/80 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 group"
                 data-scroll="fade-up"
                 style={{ 
                   transitionDelay: `${index * 150}ms`,
                   animationDelay: `${index * 150}ms`
                 }}
               >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
                   {category}
                 </h3>
                 <div className="flex flex-wrap gap-2">

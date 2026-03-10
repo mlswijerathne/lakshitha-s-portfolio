@@ -73,11 +73,15 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
+    <section id="contact" className="py-24 bg-gray-50/50 dark:bg-gray-800/50">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="scroll-hidden" data-scroll="fade-up">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Get In Touch</h2>
+            <div className="flex items-center gap-4 justify-center mb-4">
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Get In Touch</h2>
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+            </div>
           </div>
         </div>
 
@@ -187,7 +191,7 @@ const Contact = () => {
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-300 transform focus:scale-105"
+                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-200"
                   required
                   disabled={isSubmitting}
                 />
@@ -200,7 +204,7 @@ const Contact = () => {
                   placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-300 transform focus:scale-105"
+                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-200"
                   required
                   disabled={isSubmitting}
                 />
@@ -213,7 +217,7 @@ const Contact = () => {
                   placeholder="Subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-300 transform focus:scale-105"
+                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all duration-200"
                   required
                   disabled={isSubmitting}
                 />
@@ -226,7 +230,7 @@ const Contact = () => {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none transition-all duration-300 transform focus:scale-105"
+                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 resize-none transition-all duration-200"
                   required
                   disabled={isSubmitting}
                 ></textarea>
@@ -239,7 +243,7 @@ const Contact = () => {
                   style={{
                     backgroundColor: isSubmitting ? '#9CA3AF' : '#222831'
                   }}
-                  className="w-full px-6 py-3 hover:opacity-90 disabled:opacity-50 text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center border-2 border-transparent hover:border-blue-400 dark:hover:border-blue-500"
+                  className="w-full px-6 py-3 hover:opacity-90 disabled:opacity-50 text-white font-medium rounded-full transition-all duration-200 flex items-center justify-center"
                   onMouseEnter={(e) => {
                     if (!isSubmitting) {
                       e.target.style.backgroundColor = '#1a1f26';

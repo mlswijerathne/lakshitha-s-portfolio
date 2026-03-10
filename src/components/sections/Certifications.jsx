@@ -6,12 +6,16 @@ const Certifications = () => {
   useScrollAnimation();
 
   return (
-    <section id="certifications" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="certifications" className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="scroll-hidden" data-scroll="fade-up">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Licenses & Certifications</h2>
+            <div className="flex items-center gap-4 justify-center mb-4">
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Licenses & Certifications</h2>
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+            </div>
           </div>
           <div className="scroll-hidden" data-scroll="fade-up">
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -25,7 +29,7 @@ const Certifications = () => {
           {certifications.map((cert, index) => (
             <div
               key={index}
-              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-500 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transform hover:scale-[1.02] scroll-hidden"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-200/80 dark:border-gray-700/80 hover:border-gray-300 dark:hover:border-gray-600 scroll-hidden"
               data-scroll="fade-up"
               style={{ 
                 transitionDelay: `${index * 100}ms`,

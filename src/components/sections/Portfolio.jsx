@@ -61,12 +61,16 @@ const Portfolio = () => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+    <section id="projects" className="py-24 bg-gray-50/50 dark:bg-gray-800/50 transition-colors duration-300">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="scroll-hidden" data-scroll="fade-up">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Projects</h2>
+            <div className="flex items-center gap-4 justify-center mb-4">
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">My Projects</h2>
+              <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+            </div>
           </div>
           <div className="scroll-hidden" data-scroll="fade-up">
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -110,7 +114,7 @@ const Portfolio = () => {
           {filteredProjects.map((project) => (
             <div 
               key={project.id} 
-              className="group bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-500 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600 scroll-hidden"
+              className="group bg-white dark:bg-gray-900 rounded-2xl hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200/80 dark:border-gray-700/80 hover:border-gray-300 dark:hover:border-gray-600 scroll-hidden"
               data-scroll="fade-up"
             >
               {/* Project Image */}

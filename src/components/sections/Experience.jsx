@@ -23,7 +23,7 @@ const CompanyIcon = ({ name }) => {
     .map((w) => w[0].toUpperCase())
     .join('');
   return (
-    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-sm font-bold shadow-md flex-shrink-0">
+    <div className="w-12 h-12 rounded-xl bg-gray-900 dark:bg-white flex items-center justify-center text-white dark:text-gray-900 text-sm font-bold flex-shrink-0">
       {abbr}
     </div>
   );
@@ -40,7 +40,7 @@ const RoleCard = ({ role, isLast }) => (
     {/* Dot on timeline */}
     <span className="absolute left-[-4px] top-2 w-2.5 h-2.5 rounded-full bg-blue-500 ring-2 ring-white dark:ring-gray-900 flex-shrink-0" aria-hidden="true" />
 
-    <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-700/50 hover:scale-[1.01] hover:border-blue-200 dark:hover:border-blue-600">
+    <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700/80 transition-all duration-300 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600">
       <div className="flex flex-col sm:flex-row sm:items-start gap-3 mb-3">
         <div className="flex-1 min-w-0">
           <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{role.title}</h4>
@@ -88,12 +88,14 @@ const Experience = () => {
   useScrollAnimation();
 
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-gray-900">
+    <section id="experience" className="py-24 bg-white dark:bg-gray-900">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="scroll-hidden" data-scroll="fade-up">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-            Experience
-          </h2>
+          <div className="flex items-center gap-4 justify-center mb-12">
+            <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Experience</h2>
+            <div className="h-px flex-1 max-w-[80px] bg-gray-300 dark:bg-gray-600"></div>
+          </div>
         </div>
 
         <div className="max-w-3xl mx-auto space-y-10">
@@ -133,7 +135,7 @@ const Experience = () => {
               {/* Roles */}
               {company.roles.length === 1 ? (
                 /* Single role — flat card, no timeline */
-                <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-700/50 hover:scale-[1.01] hover:border-blue-200 dark:hover:border-blue-600">
+                <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-700/80 transition-all duration-300 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600">
                   <div className="flex flex-wrap items-center gap-2 mb-3">
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mr-1">
                       {company.roles[0].title}
@@ -174,7 +176,7 @@ const Experience = () => {
                 </div>
               ) : (
                 /* Multi-role: vertical timeline */
-                <div className="ml-4 border-l-2 border-gray-100 dark:border-gray-700 pl-4">
+                <div className="ml-4 border-l border-gray-200 dark:border-gray-700 pl-4">
                   {company.roles.map((role, rIdx) => (
                     <RoleCard
                       key={`${role.title}-${rIdx}`}
