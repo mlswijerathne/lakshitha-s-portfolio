@@ -76,7 +76,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
-            {NAVIGATION_ITEMS.map((item, index) => (
+            {NAVIGATION_ITEMS.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
@@ -122,7 +122,7 @@ const Header = () => {
           }`}
         >
           <nav className="space-y-1">
-            {NAVIGATION_ITEMS.map((item, index) => (
+            {NAVIGATION_ITEMS.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}

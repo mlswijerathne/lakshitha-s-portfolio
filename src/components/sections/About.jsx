@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { personalInfo, skills, education, achievements } from '../../data/portfolioData';
+import React from 'react';
+import { personalInfo, skills, education } from '../../data/portfolioData';
 import SocialIcons from '../common/SocialIcons';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import Lakshitha from '../../assets/Lakshitha.jpg';

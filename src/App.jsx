@@ -4,6 +4,7 @@ import { useScrollAnimation } from './hooks/useScrollAnimation';
 import Header from './components/layout/Header';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
+import Experience from './components/sections/Experience';
 import Portfolio from './components/sections/Portfolio';
 import Certifications from './components/sections/Certifications';
 import Contact from './components/sections/Contact';
@@ -26,6 +27,7 @@ function App() {
         <main>
           <Hero />
           <About />
+          <Experience />
           <Portfolio />
           <Certifications />
           <Contact />

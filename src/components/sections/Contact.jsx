@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { personalInfo, references } from '../../data/portfolioData';
+import { personalInfo } from '../../data/portfolioData';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {

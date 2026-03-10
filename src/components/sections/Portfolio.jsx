@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { projects } from '../../data/portfolioData';
-import { useTheme } from '../../context/ThemeContext';
 
 import AuctionImg from '../../assets/Auction.png';
 import InventryImg from '../../assets/Inventry.png';
@@ -14,8 +13,6 @@ const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeFilter, setActiveFilter] = useState('all');
-  const { theme } = useTheme();
-
   // Close modal on ESC key press
   React.useEffect(() => {
     const handleEscKey = (event) => {
@@ -81,7 +78,7 @@ const Portfolio = () => {
 
         {/* Filter Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-12 scroll-hidden" data-scroll="fade-up">
-          {filterCategories.map((category, index) => (
+          {filterCategories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveFilter(category.id)}
@@ -110,7 +107,7 @@ const Portfolio = () => {
         
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <div 
               key={project.id} 
               className="group bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-500 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600 scroll-hidden"

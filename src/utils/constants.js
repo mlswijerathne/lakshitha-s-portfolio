@@ -2,6 +2,7 @@
 export const NAVIGATION_ITEMS = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
   { name: 'Certifications', href: '#certifications' },
   { name: 'Contact', href: '#contact' }

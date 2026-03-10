@@ -1,15 +1,15 @@
 export const personalInfo = {
   name: "Lakshitha Wijerathne",
-  title: "Computer Science Undergraduate",
+  title: "Associate Software Engineer - AI | Computer Science Undergraduate",
   location: "Sri Lanka",
   email: "mlswijerathne@gmail.com",
   phone: "+94 766298167",
   github: "https://github.com/lakshitha-wijerathne",
   linkedin: "https://linkedin.com/in/lakshitha-wijerathne",
   medium: "https://medium.com/@lakshitha-wijerathne",
-  objective: "I'm a computer science student with a strong interest in mathematics, data structures and algorithms, as well as both backend and frontend development. I've worked on several projects that have helped me build real-world coding experience and problem-solving skills. I look forward to applying my knowledge, continuing to learn, and growing as a developer through new opportunities and collaborations",
-  experience: "3+ Years",
-  completedProjects: "6+",
+  objective: "I'm an Associate Software Engineer at BISTEC Global Services with hands-on experience in Agent Development and Model Context Protocol (MCP). I'm passionate about building intelligent systems, designing scalable backend architectures, and bridging complex software engineering concepts with practical solutions. My journey spans full-stack development, AI/LLM integrations, and technical writing — and I'm continuously expanding my expertise across cloud platforms and modern software engineering practices.",
+  experience: "1+ Year",
+  completedProjects: "7+",
   happyCustomers: "98%"
 };
 
@@ -63,13 +63,15 @@ export const skills = {
   ],
   categories: {
     "Programming Languages": ["HTML", "CSS", "JavaScript", "TypeScript", "Java", "C", "C#", "Python", "Dart"],
-    "Frameworks": ["ASP .NET", "Python Flask", "React.js", "Next.js", "Flutter", "Tailwind CSS"],
+    "Frameworks": ["ASP .NET", "Python Flask", "React.js", "Next.js", "Flutter", "Tailwind CSS", "Spring Boot"],
     "Web Development Technologies": ["RESTfull API", "REST API", "Web API", "Axios", "JWT", "Postman", "Docker"],
     "Mobile Application Development Technologies & Frameworks": ["Flutter", "Firebase", "API Integration"],
+    "AI & Agent Development": ["Model Context Protocol (MCP)", "Agent Development", "Google Agent Development Kit (ADK)", "Large Language Models (LLM)", "Artificial Intelligence (AI)", "Machine Learning", "Data Science", "Prompt Engineering"],
+    "Cloud Platforms": ["Azure", "AWS", "Oracle Cloud Infrastructure", "Cloudflare", "Cloud Computing"],
     "Tools": ["VScode", "Intellij Idea", "Visual Studio", "Google Colab", "Jupyter Notebook", "Docker", "Jenkins", "Vite", "pnpm", "ESLint"],
-    "Database Development": ["Firebase", "SQL Server Management", "MySQL", "PostgreSQL"],
+    "Database Development": ["Firebase", "SQL Server Management", "MySQL", "PostgreSQL", "Supabase", "Neon"],
     "Version Control": ["Git", "GitHub", "Azure DevOps"],
-    "Concepts": ["Software Development Life Cycle (SDLC)", "Object-Oriented Programming (OOP)", "Mobile App Development Principles", "Agile Methodology", "Jira", "Confluence"],
+    "Concepts": ["Software Development Life Cycle (SDLC)", "Object-Oriented Programming (OOP)", "Microservices", "Agile Methodology", "Jira", "Confluence"],
     "UI/UX": ["Canva", "Figma"],
     "Soft Skills": ["Leadership", "Time management", "Communication", "Self-Learner", "Problem-Solving", "Time Management", "Team Work"]
   }
@@ -283,5 +285,54 @@ export const references = [
     address: "18th Floor, Orion Towers 1, 736 Dr. Danister De Silva Mawatha, Colombo 00900, SRI LANKA",
     phone: "(+94)77 058 8019",
     email: "greathew@gmail.com"
+  }
+];
+
+export const experience = [
+  {
+    company: "BISTEC Global Services",
+    companyUrl: "https://www.bistecglobal.com",
+    location: "Colombo, Western Province, Sri Lanka",
+    // totalDuration is computed dynamically in Experience.jsx using calcTotalTenure
+    companyStart: "Aug 2025",
+    companyEnd: "Present",
+    roles: [
+      {
+        title: "Associate Software Engineer",
+        type: "Full-time",
+        startDate: "Jan 2026",
+        endDate: "Present",
+        workMode: "Hybrid",
+        description: "Agent Development and Model Context Protocol (MCP)",
+        skills: ["Model Context Protocol (MCP)", "Agent Development", "Google Agent Development Kit (ADK)", "Large Language Models (LLM)"]
+      },
+      {
+        title: "Software Engineer Intern",
+        type: "Internship",
+        startDate: "Aug 2025",
+        endDate: "Jan 2026",
+        workMode: "Hybrid",
+        description: "",
+        skills: ["Python", "ASP.NET Core", "Next.js", "Docker", "Supabase", "Large Language Models (LLM)", "Cloudflare", "Artificial Intelligence (AI)"]
+      }
+    ]
+  },
+  {
+    company: "Medium",
+    companyUrl: "https://medium.com/@lakshitha-wijerathne",
+    location: "Sri Lanka · Remote",
+    companyStart: "Mar 2025",
+    companyEnd: "Sep 2025",
+    roles: [
+      {
+        title: "Technical Writer",
+        type: "Part-time",
+        startDate: "Mar 2025",
+        endDate: "Sep 2025",
+        workMode: "Remote",
+        description: "Published technical articles on Medium, translating complex software engineering concepts into clear, accessible content for developers.",
+        skills: ["Technical Writing", "Software Documentation", "Communication"]
+      }
+    ]
   }
 ];

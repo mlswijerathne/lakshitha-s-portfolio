@@ -120,6 +120,46 @@ export const downloadFile = (url, filename) => {
   document.body.removeChild(link);
 };
 
+// ── Experience duration helpers ─────────────────────────────────────────────
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+/**
+ * Parse a "Mon YYYY" string (or the literal "Present") into a Date.
+ * Day is set to 1 so month arithmetic stays clean.
+ */
+export const parseMonthYear = (str) => {
+  if (!str || str === 'Present') return new Date();
+  const [mon, yr] = str.trim().split(' ');
+  return new Date(parseInt(yr, 10), MONTHS.indexOf(mon), 1);
+};
+
+/**
+ * Return a human-readable duration between two "Mon YYYY" / "Present" strings.
+ * e.g. calcDuration('Aug 2025', 'Present') → '7 mos'
+ *      calcDuration('Jan 2026', 'Present') → '3 mos'
+ */
+export const calcDuration = (startStr, endStr = 'Present') => {
+  const start = parseMonthYear(startStr);
+  const end   = parseMonthYear(endStr);
+  const totalMonths =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    (end.getMonth()    - start.getMonth());
+  const months = Math.max(totalMonths, 1);
+  if (months < 12) return `${months} mo${months !== 1 ? 's' : ''}`;
+  const yrs  = Math.floor(months / 12);
+  const rem  = months % 12;
+  const yPart = `${yrs} yr${yrs !== 1 ? 's' : ''}`;
+  return rem === 0 ? yPart : `${yPart} ${rem} mo${rem !== 1 ? 's' : ''}`;
+};
+
+/**
+ * Span total tenure across all roles of a company.
+ * Pass the earliest startStr and the latest endStr.
+ */
+export const calcTotalTenure = (earliestStart, latestEnd = 'Present') =>
+  calcDuration(earliestStart, latestEnd);
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Mobile and performance detection utilities
 export const isMobileDevice = () => {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
