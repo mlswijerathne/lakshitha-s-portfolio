@@ -160,22 +160,17 @@ export const projects = [
 export const services = [
   {
     title: "Website Design & Development",
-    description: "Our approach to website design is to create a website that strengthens your company's brand while ensuring ease of use and simplicity for your audience.",
+    description: "Building modern, high-performance websites that strengthen your brand while ensuring ease of use, accessibility, and a seamless user experience.",
     icon: "💻"
   },
   {
-    title: "Website Development",
-    description: "We develop professional and creative websites that meet your business requirements using the latest technologies and best practices.",
-    icon: "🌐"
+    title: "AI Agent Development",
+    description: "Designing and building intelligent AI agents using Model Context Protocol (MCP), LLMs, and agent frameworks to automate workflows and solve complex problems.",
+    icon: "🤖"
   },
   {
-    title: "Logo Design",
-    description: "Our goal is to design a professional and creative logo that makes your company's business stand out from the competition.",
-    icon: "🎨"
-  },
-  {
-    title: "Responsive Web Design",
-    description: "Creating responsive websites that work perfectly on all devices and provide an optimal user experience across all platforms.",
+    title: "Mobile App Development",
+    description: "Creating cross-platform mobile applications with Flutter and native technologies, featuring real-time updates, smooth UX, and scalable backend integrations.",
     icon: "📱"
   }
 ];

@@ -9,20 +9,17 @@ import Portfolio from './components/sections/Portfolio';
 import Certifications from './components/sections/Certifications';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
-import AnimatedBackground from './components/common/AnimatedBackground';
 
 function App() {
   useScrollAnimation();
 
   useEffect(() => {
-    // Set the document title
     document.title = 'Lakshitha Wijerathne - Portfolio';
   }, []);
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 relative">
-        <AnimatedBackground />
+      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 relative">
         <Header />
         <main>
           <Hero />

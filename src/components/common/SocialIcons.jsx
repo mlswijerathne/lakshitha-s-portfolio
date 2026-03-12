@@ -1,60 +1,25 @@
 import React from 'react';
 import { Github, Linkedin, Mail, FileText } from 'lucide-react';
 
-const SocialIcons = ({ className = '', iconSize = 24, showLabels = false }) => {
+const SocialIcons = ({ className = '', iconSize = 20 }) => {
   const socialLinks = [
-    {
-      name: 'GitHub',
-      url: 'https://github.com/mlswijerathne',
-      icon: Github,
-      color: 'hover:text-gray-700 dark:hover:text-gray-300'
-    },
-    {
-      name: 'LinkedIn', 
-      url: 'https://www.linkedin.com/in/lakshitha-wijerathne/',
-      icon: Linkedin,
-      color: 'hover:text-blue-600'
-    },
-    {
-      name: 'Medium',
-      url: 'https://medium.com/@lakshithaa',
-      icon: FileText,
-      color: 'hover:text-green-600'
-    },
-    {
-      name: 'Email',
-      url: 'mailto:mlswijerathne@gmail.com',
-      icon: Mail,
-      color: 'hover:text-red-600'
-    }
+    { name: 'GitHub', url: 'https://github.com/mlswijerathne', icon: Github, hoverColor: 'hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/lakshitha-wijerathne/', icon: Linkedin, hoverColor: 'hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/30' },
+    { name: 'Medium', url: 'https://medium.com/@lakshithaa', icon: FileText, hoverColor: 'hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30' },
+    { name: 'Email', url: 'mailto:mlswijerathne@gmail.com', icon: Mail, hoverColor: 'hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30' }
   ];
 
   const handleClick = (url) => {
-    if (url.startsWith('mailto:')) {
-      window.location.href = url;
-    } else {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
+    if (url.startsWith('mailto:')) window.location.href = url;
+    else window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <div className={`flex items-center gap-4 ${className}`}>
+    <div className={`flex items-center gap-2 ${className}`}>
       {socialLinks.map((social) => (
-        <div key={social.name} className="flex flex-col items-center">
-          <button
-            onClick={() => handleClick(social.url)}
-            className={`p-2 text-gray-600 dark:text-gray-400 ${social.color} transition-colors duration-200`}
-            aria-label={`Visit ${social.name} profile`}
-            title={social.name}
-          >
-            <social.icon size={iconSize} />
-          </button>
-          {showLabels && (
-            <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              {social.name}
-            </span>
-          )}
-        </div>
+        <button key={social.name} onClick={() => handleClick(social.url)} className={`p-2.5 text-gray-400 dark:text-gray-500 ${social.hoverColor} rounded-xl transition-all duration-200`} aria-label={`Visit ${social.name} profile`} title={social.name}>
+          <social.icon size={iconSize} />
+        </button>
       ))}
     </div>
   );

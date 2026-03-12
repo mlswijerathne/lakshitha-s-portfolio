@@ -9,112 +9,56 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+      },
+      colors: {
+        accent: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+        },
       },
       animation: {
-        'gradient-x': 'gradient-x 15s ease infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
-        'fade-in-left': 'fadeInLeft 0.5s ease-out forwards',
-        'fade-in-right': 'fadeInRight 0.5s ease-out forwards',
+        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+        'fade-in-left': 'fadeInLeft 0.6s ease-out forwards',
+        'fade-in-right': 'fadeInRight 0.6s ease-out forwards',
         'slide-in-down': 'slideInDown 0.5s ease-out forwards',
         'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
         'bounce-gentle': 'bounce-gentle 2s infinite',
-        'typing': 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite',
       },
       keyframes: {
-        'gradient-x': {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center',
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center',
-          },
+        fadeInUp: {
+          from: { opacity: '0', transform: 'translateY(30px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+        fadeInLeft: {
+          from: { opacity: '0', transform: 'translateX(-30px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
         },
-        'fadeInUp': {
-          'from': {
-            opacity: '0',
-            transform: 'translateY(20px)',
-          },
-          'to': {
-            opacity: '1',
-            transform: 'translateY(0)',
-          },
+        fadeInRight: {
+          from: { opacity: '0', transform: 'translateX(30px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
         },
-        'fadeInLeft': {
-          'from': {
-            opacity: '0',
-            transform: 'translateX(-20px)',
-          },
-          'to': {
-            opacity: '1',
-            transform: 'translateX(0)',
-          },
-        },
-        'fadeInRight': {
-          'from': {
-            opacity: '0',
-            transform: 'translateX(20px)',
-          },
-          'to': {
-            opacity: '1',
-            transform: 'translateX(0)',
-          },
-        },
-        'slideInDown': {
-          'from': {
-            opacity: '0',
-            transform: 'translateY(-20px)',
-          },
-          'to': {
-            opacity: '1',
-            transform: 'translateY(0)',
-          },
+        slideInDown: {
+          from: { opacity: '0', transform: 'translateY(-20px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
         'pulse-slow': {
-          '0%, 100%': {
-            opacity: '1',
-          },
-          '50%': {
-            opacity: '0.8',
-          },
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.8' },
         },
         'bounce-gentle': {
-          '0%, 20%, 53%, 80%, 100%': {
-            transform: 'translateY(0)',
-          },
-          '40%, 43%': {
-            transform: 'translateY(-10px)',
-          },
-          '70%': {
-            transform: 'translateY(-5px)',
-          },
+          '0%, 20%, 53%, 80%, 100%': { transform: 'translateY(0)' },
+          '40%, 43%': { transform: 'translateY(-8px)' },
+          '70%': { transform: 'translateY(-4px)' },
         },
-        'typing': {
-          'from': {
-            width: '0',
-          },
-          'to': {
-            width: '100%',
-          },
-        },
-        'blink-caret': {
-          'from, to': {
-            'border-color': 'transparent',
-          },
-          '50%': {
-            'border-color': 'currentColor',
-          },
-        },
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
