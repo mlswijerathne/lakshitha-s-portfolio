@@ -50,7 +50,7 @@ const Experience = () => {
   useScrollAnimation();
 
   return (
-    <section id="experience" className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
+    <section id="experience" className="py-14 sm:py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
       <div className="absolute top-10 left-0 right-0 flex justify-center pointer-events-none select-none">
         <span className="watermark-text text-[8rem] md:text-[14rem]">Experience</span>
       </div>

@@ -20,15 +20,8 @@ const Hero = () => {
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 pt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-6 order-2 lg:order-1">
-            <div className="scroll-hidden" data-scroll="fade-up">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-sm font-medium border border-accent-100 dark:border-accent-800">
-                <span className="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
-                Available for collaboration
-              </span>
-            </div>
-
-            <div className="scroll-hidden" data-scroll="fade-up">
+          <div className="space-y-6 order-1 lg:order-1">
+<div className="scroll-hidden" data-scroll="fade-up">
               <p className="text-gray-500 dark:text-gray-400 text-lg font-medium">Hello, I'm</p>
             </div>
 
@@ -69,12 +62,12 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end scroll-hidden" data-scroll="fade-up">
+          <div className="order-2 lg:order-2 flex justify-center lg:justify-end scroll-hidden" data-scroll="fade-up">
             <div className="relative">
               <div className="absolute -inset-4 bg-accent-100/50 dark:bg-accent-900/30 rounded-[2rem] -rotate-3"></div>
               <div className="absolute -inset-4 border-2 border-accent-200/50 dark:border-accent-700/50 rounded-[2rem] rotate-3"></div>
 
-              <div className="relative w-72 h-80 sm:w-80 sm:h-[22rem] lg:w-96 lg:h-[26rem] rounded-2xl overflow-hidden shadow-2xl shadow-accent-200/30 dark:shadow-accent-900/20">
+              <div className="relative w-48 h-56 sm:w-80 sm:h-[22rem] lg:w-96 lg:h-[26rem] rounded-2xl overflow-hidden shadow-2xl shadow-accent-200/30 dark:shadow-accent-900/20">
                 <img src={Lakshitha} alt="Lakshitha Wijerathne - Associate Software Engineer and AI Developer" className="w-full h-full object-cover" style={{ objectPosition: 'center 30%' }} />
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-accent-900/30 to-transparent"></div>
               </div>

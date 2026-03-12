@@ -56,7 +56,7 @@ const Contact = () => {
   const inputClass = "w-full px-4 py-3 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-transparent text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-all text-sm";
 
   return (
-    <section id="contact" className="py-24 bg-gray-50/60 dark:bg-slate-800/50 relative overflow-hidden">
+    <section id="contact" className="py-14 sm:py-24 bg-gray-50/60 dark:bg-slate-800/50 relative overflow-hidden">
       <div className="absolute top-10 left-0 right-0 flex justify-center pointer-events-none select-none">
         <span className="watermark-text text-[8rem] md:text-[14rem]">Contact</span>
       </div>

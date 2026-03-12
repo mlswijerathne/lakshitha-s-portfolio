@@ -131,9 +131,9 @@ html {
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-/* Mobile optimizations */
+/* Mobile font size reduction */
 @media (max-width: 768px) {
-  html { scroll-behavior: auto; }
+  html { scroll-behavior: auto; font-size: 14px; }
   .scroll-hidden, .scroll-hidden-left, .scroll-hidden-right,
   .scroll-hidden-down, .scroll-hidden-up, .scroll-hidden-scale {
     transform: translateY(8px) !important; opacity: 0;
