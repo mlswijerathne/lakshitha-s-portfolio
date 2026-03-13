@@ -19,7 +19,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 relative">
+      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 relative overflow-x-hidden">
         <Header />
         <main>
           <Hero />
