@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Building a Production-Ready RAG System: Architecture, Pipelines, and CI/CD on Azure",
+    "pubDate": "Wed, 18 Mar 2026 06:14:12 GMT",
+    "link": "https://lakshithaa.medium.com/building-a-production-ready-rag-system-architecture-pipelines-and-ci-cd-on-azure-5f64d52498f1?source=rss-bd24d7a9a1d9------2",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*8vobdnMuRIxk8ivYz3ZfsQ.png",
+    "description": "RAG SystemA deep dive into how I designed and deployed a session-isolated, scalable Retrieval-Augmented Generation platform using FastAPI, Qdrant, Next.js, and …",
+    "categories": [
+      "rags",
+      "azur",
+      "docker"
+    ]
+  },
+  {
+    "title": "Mastering SOLID Principles: Writing Clean, Maintainable Code with Practical Examples",
+    "pubDate": "Mon, 04 Aug 2025 15:22:57 GMT",
+    "link": "https://lakshithaa.medium.com/mastering-solid-principles-writing-clean-maintainable-code-with-practical-examples-526ecbbb3553?source=rss-bd24d7a9a1d9------2",
+    "thumbnail": "https://cdn-images-1.medium.com/max/1024/1*dm3v_NmkQQjjKY40Kmv39Q.png",
+    "description": "💭Picture this: It’s a late-night deployment. Production is down, and you’re staring at a 500-line file packed with everything from database calls to email noti…",
+    "categories": [
+      "software-architecture",
+      "solid-principles",
+      "clean-code"
+    ]
+  },
+  {
+    "title": "How to Configure Your Flutter App with Firebase Using the FlutterFire CLI",
+    "pubDate": "Mon, 17 Mar 2025 05:04:07 GMT",
+    "link": "https://lakshithaa.medium.com/how-to-configure-your-flutter-app-with-firebase-using-the-flutterfire-cli-a95b3210f933?source=rss-bd24d7a9a1d9------2",
+    "thumbnail": "https://cdn-images-1.medium.com/max/686/1*vV0EgCx8_rAz3XQzKSVUlg.jpeg",
+    "description": "Firebase is a powerful backend-as-a-service (BaaS) platform that provides developers with tools to build, improve, and grow their applications. Integrating Fire…",
+    "categories": []
+  }
+]
