@@ -14,4 +14,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, '.'),
     },
   },
+  server: {
+    proxy: {
+      '/medium-feed': {
+        target: 'https://medium.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/medium-feed/, '/feed/@lakshithaa'),
+      },
+    },
+  },
 });
