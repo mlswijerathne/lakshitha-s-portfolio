@@ -51,38 +51,38 @@
   }
 
   [data-theme="light"] {
-    --bg-primary: #f5f7fb;
-    --bg-secondary: #e8ecf4;
+    --bg-primary: #f8f8ff;
+    --bg-secondary: #f0f0ff;
     --bg-card: #ffffff;
-    --bg-input: #dde1ea;
-    --bg-footer: #d4d8e3;
-    --text-primary: #1a1c2b;
-    --text-secondary: #5a5d72;
-    --accent-blue: #1e293b;
-    --accent-purple: #334155;
-    --border-color: rgba(0, 0, 0, 0.08);
-    --gradient-from: #1e293b;
-    --gradient-to: #334155;
-    --glow-blue: rgba(30, 41, 59, 0.06);
-    --glow-purple: rgba(51, 65, 85, 0.06);
-    --hover-bg: rgba(30, 41, 59, 0.08);
-    --success-bg: rgba(34, 197, 94, 0.1);
+    --bg-input: #e8e8fa;
+    --bg-footer: #dcdcf0;
+    --text-primary: #08080f;
+    --text-secondary: #2a2a45;
+    --accent-blue: #6d7ff5;
+    --accent-purple: #a87af5;
+    --border-color: rgba(109, 127, 245, 0.15);
+    --gradient-from: #6d7ff5;
+    --gradient-to: #a87af5;
+    --glow-blue: rgba(109, 127, 245, 0.1);
+    --glow-purple: rgba(168, 122, 245, 0.1);
+    --hover-bg: rgba(109, 127, 245, 0.08);
+    --success-bg: rgba(34, 197, 94, 0.08);
     --success-border: #bbf7d0;
-    --success-text: #166534;
-    --error-bg: rgba(239, 68, 68, 0.1);
+    --success-text: #15803d;
+    --error-bg: rgba(239, 68, 68, 0.08);
     --error-border: #fecaca;
-    --error-text: #991b1b;
-    --info-bg: rgba(59, 130, 246, 0.1);
-    --info-border: #bfdbfe;
-    --info-text: #1e40af;
-    --selection-bg: rgba(30, 41, 59, 0.15);
-    --nav-scrolled: rgba(245, 247, 251, 0.85);
-    --gradient-overlay-from: #e8ecf4;
-    --img-overlay: rgba(255, 255, 255, 0.3);
-    --calendar-empty: #ebedf0;
-    --calendar-l1: #9be9a8;
-    --calendar-l2: #40c463;
-    --calendar-l3: #30a14e;
-    --calendar-l4: #216e39;
+    --error-text: #b91c1c;
+    --info-bg: rgba(109, 127, 245, 0.08);
+    --info-border: #c8d0fc;
+    --info-text: #5566e8;
+    --selection-bg: rgba(109, 127, 245, 0.18);
+    --nav-scrolled: rgba(248, 248, 255, 0.9);
+    --gradient-overlay-from: #f0f0ff;
+    --img-overlay: rgba(255, 255, 255, 0.25);
+    --calendar-empty: #ebebff;
+    --calendar-l1: #c8d0fc;
+    --calendar-l2: #9eaafc;
+    --calendar-l3: #6d7ff5;
+    --calendar-l4: #4a5ce0;
   }
 }

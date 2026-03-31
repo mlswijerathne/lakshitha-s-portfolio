@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { GitHubCalendar } from 'react-github-calendar';
 import {
   Github,
@@ -76,6 +77,62 @@ interface Certification {
   credentialId?: string;
   credentialUrl: string;
   skills: string[];
+}
+
+// --- Medium ---
+const MEDIUM_USERNAME = 'lakshithaa';
+
+interface MediumArticle {
+  title: string;
+  pubDate: string;
+  link: string;
+  thumbnail: string;
+  description: string;
+  categories: string[];
+}
+
+function useMediumArticles() {
+  const [articles, setArticles] = useState<MediumArticle[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        if (import.meta.env.DEV) {
+          const res = await fetch('/medium-feed');
+          const text = await res.text();
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(text, 'text/xml');
+          const items = Array.from(xml.querySelectorAll('item')).slice(0, 4);
+          const parsed: MediumArticle[] = items.map((item) => {
+            const title = item.querySelector('title')?.textContent || '';
+            const pubDate = item.querySelector('pubDate')?.textContent || '';
+            const link = item.querySelector('link')?.nextSibling?.textContent || item.querySelector('link')?.textContent || '';
+            const content = item.getElementsByTagNameNS('*', 'encoded')[0]?.textContent || '';
+            const description = content.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().slice(0, 160) + '…';
+            const thumbnail = content.match(/<img[^>]+src="([^"]+)"/)?.[1] || '';
+            const categories = Array.from(item.querySelectorAll('category'))
+              .map((cat) => cat.textContent || '')
+              .filter(Boolean)
+              .slice(0, 3);
+            return { title, pubDate, link, thumbnail, description, categories };
+          });
+          setArticles(parsed);
+        } else {
+          const res = await fetch('/medium-articles.json');
+          const data: MediumArticle[] = await res.json();
+          setArticles(data);
+        }
+      } catch (err) {
+        console.error('Failed to fetch Medium articles:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchArticles();
+  }, []);
+
+  return { articles, loading };
 }
 
 // --- GitHub ---
@@ -279,7 +336,7 @@ const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          {['Work', 'Skills', 'Experience', 'Certifications', 'Contact'].map((item) => (
+          {['Work', 'Skills', 'Experience', 'Certifications', 'Writing', 'Contact'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -321,7 +378,7 @@ const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
             className="absolute top-full left-0 w-full bg-[var(--bg-primary)] border-t border-[var(--border-color)] p-6 md:hidden"
           >
             <div className="flex flex-col gap-6">
-              {['Work', 'Skills', 'Experience', 'Certifications', 'Contact'].map((item) => (
+              {['Work', 'Skills', 'Experience', 'Certifications', 'Writing', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -345,6 +402,7 @@ export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'mailto' | 'error' | null>(null);
   const { stats: githubStats, loading: githubLoading } = useGitHubStats(GITHUB_USERNAME);
+  const { articles: mediumArticles, loading: mediumLoading } = useMediumArticles();
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved ? saved === 'dark' : true;
@@ -413,41 +471,59 @@ export default function App() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] -z-10" style={{ backgroundColor: 'var(--glow-blue)' }} />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[100px] -z-10" style={{ backgroundColor: 'var(--glow-purple)' }} />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <h2 className="text-[var(--text-secondary)] font-medium text-lg mb-4">Hi, I'm Lakshitha Wijerathne</h2>
-            <h1 className="text-4xl md:text-8xl font-extrabold tracking-tighter mb-6 leading-[0.9]">
-              Software <span className="bg-gradient-to-r from-[var(--accent-blue)] to-[var(--accent-purple)] bg-clip-text text-transparent">Engineer</span>
-            </h1>
-            <p className="text-[var(--text-secondary)] text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
-              Associate Software Engineer at BISTEC Global Services with hands-on experience in Agent Development and Model Context Protocol (MCP). Passionate about building intelligent systems and scalable backend architectures.
-            </p>
+          <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-8 items-center">
 
-            <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="px-8 py-4 bg-[var(--accent-blue)] text-[var(--bg-primary)] font-bold rounded-lg hover:opacity-85 transition-all active:scale-[0.98]">
-                Get In Touch
-              </a>
-            </div>
+            {/* Left — Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-[1.05]">
+                Lakshitha <span className="bg-gradient-to-r from-[var(--accent-blue)] to-[var(--accent-purple)] bg-clip-text text-transparent">Wijerathne</span>
+              </h1>
+              <p className="text-[var(--text-secondary)] text-base md:text-lg mb-6 max-w-xl leading-relaxed">
+                Associate Software Engineer at BISTEC Global Services with hands-on experience in Agent Development and Model Context Protocol (MCP). Passionate about building intelligent systems and scalable backend architectures.
+              </p>
 
-            <div className="flex gap-6 mt-12 text-[var(--text-secondary)]">
-              <a href="https://github.com/mlswijerathne" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-blue)] transition-colors flex items-center gap-2">
-                <Github size={18} />
-                <span className="font-medium">GitHub</span>
-              </a>
-              <a href="https://www.linkedin.com/in/lakshitha-wijerathne/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-blue)] transition-colors flex items-center gap-2">
-                <Linkedin size={18} />
-                <span className="font-medium">LinkedIn</span>
-              </a>
-              <a href="https://lakshithaa.medium.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-blue)] transition-colors flex items-center gap-2">
-                <BookOpen size={18} />
-                <span className="font-medium">Medium</span>
-              </a>
-            </div>
-          </motion.div>
+              <div className="flex flex-wrap gap-4">
+                <a href="#contact" className="px-6 py-3 bg-[var(--accent-blue)] text-[var(--bg-primary)] font-bold rounded-lg hover:opacity-85 transition-all active:scale-[0.98]">
+                  Get In Touch
+                </a>
+              </div>
+
+              <div className="flex gap-6 mt-8 text-[var(--text-secondary)]">
+                <a href="https://github.com/mlswijerathne" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-blue)] transition-colors flex items-center gap-2">
+                  <Github size={18} />
+                  <span className="font-medium">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/lakshitha-wijerathne/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-blue)] transition-colors flex items-center gap-2">
+                  <Linkedin size={18} />
+                  <span className="font-medium">LinkedIn</span>
+                </a>
+                <a href="https://lakshithaa.medium.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-blue)] transition-colors flex items-center gap-2">
+                  <BookOpen size={18} />
+                  <span className="font-medium">Medium</span>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Right — Lottie animation */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="hidden lg:flex items-center justify-center"
+            >
+              <DotLottieReact
+                src="https://assets4.lottiefiles.com/packages/lf20_pwohahvd.json"
+                loop
+                autoplay
+                style={{ width: '100%' }}
+              />
+            </motion.div>
+
+          </div>
         </section>
 
         {/* About / Bento Grid */}
@@ -479,13 +555,26 @@ export default function App() {
             <motion.div
               whileInView={{ opacity: 1, scale: 1 }}
               initial={{ opacity: 0, scale: 0.9 }}
-              className="bg-[var(--bg-card)] rounded-3xl overflow-hidden aspect-square md:aspect-auto"
+              className="relative aspect-square md:aspect-auto"
             >
-              <img
-                src={profileImg}
-                alt="Lakshitha Wijerathne"
-                className="w-full h-full object-cover"
-              />
+              {/* Soft color blobs for depth */}
+              <div className="absolute inset-0 -z-10 rounded-3xl overflow-hidden">
+                <div className="absolute top-0 right-0 w-3/4 h-3/4 rounded-full blur-3xl opacity-25" style={{ background: 'var(--accent-blue)' }} />
+                <div className="absolute bottom-0 left-0 w-1/2 h-1/2 rounded-full blur-3xl opacity-15" style={{ background: 'var(--accent-purple)' }} />
+              </div>
+
+              {/* Gradient border wrapper */}
+              <div className="w-full h-full rounded-3xl p-[2px]" style={{ background: 'linear-gradient(145deg, var(--accent-blue), var(--accent-purple))' }}>
+                <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-[var(--bg-card)]">
+                  <img
+                    src={profileImg}
+                    alt="Lakshitha Wijerathne"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  {/* Bottom fade — image crops cleanly into card */}
+                  <div className="absolute bottom-0 left-0 right-0 h-20" style={{ background: 'linear-gradient(to top, var(--bg-card), transparent)' }} />
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -602,12 +691,62 @@ export default function App() {
                   fontSize={12}
                   theme={{
                     dark: ['#1d1f27', '#2a4a8f', '#3b6cd4', '#5a8eff', '#b4c5ff'],
-                    light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
+                    light: ['#ebebff', '#c8d0fc', '#9eaafc', '#6d7ff5', '#4a5ce0']
                   }}
                 />
               </div>
             </motion.div>
           </div>
+        </section>
+
+        {/* Writing / Medium Articles */}
+        <section id="writing" className="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <BookOpen size={24} className="text-[var(--accent-purple)]" />
+                  <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+                    Technical <span className="text-[var(--accent-purple)]">Writing</span>
+                  </h2>
+                </div>
+                <p className="text-[var(--text-secondary)] text-lg">Articles on software engineering, AI, and developer tools.</p>
+              </div>
+              <a
+                href={`https://lakshithaa.medium.com/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-bold text-[var(--accent-blue)] hover:opacity-75 transition-opacity whitespace-nowrap"
+              >
+                View all on Medium <ExternalLink size={14} />
+              </a>
+            </div>
+
+            {mediumLoading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="bg-[var(--bg-secondary)] rounded-2xl overflow-hidden border border-[var(--border-color)] animate-pulse">
+                    <div className="aspect-video bg-[var(--bg-input)]" />
+                    <div className="p-5 space-y-3">
+                      <div className="h-4 bg-[var(--bg-input)] rounded w-3/4" />
+                      <div className="h-3 bg-[var(--bg-input)] rounded w-full" />
+                      <div className="h-3 bg-[var(--bg-input)] rounded w-2/3" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {mediumArticles.map((article) => (
+                  <MediumArticleCard key={article.link} article={article} />
+                ))}
+              </div>
+            )}
+          </motion.div>
         </section>
 
         {/* Contact Section */}
@@ -830,6 +969,53 @@ const CertificationCard = ({ cert }: { cert: Certification; key?: string }) => (
     </div>
   </motion.a>
 );
+
+const MediumArticleCard = ({ article }: { article: MediumArticle }) => {
+  const date = new Date(article.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  return (
+    <motion.a
+      href={article.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ y: -6 }}
+      className="group flex flex-col bg-[var(--bg-secondary)] rounded-2xl overflow-hidden border border-[var(--border-color)] hover:border-[var(--accent-purple)] transition-all"
+    >
+      <div className="aspect-video relative overflow-hidden bg-[var(--bg-input)]">
+        {article.thumbnail ? (
+          <img
+            src={article.thumbnail}
+            alt={article.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-[var(--accent-purple)] opacity-30">
+            <BookOpen size={40} />
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-footer)] to-transparent opacity-50" />
+      </div>
+      <div className="p-5 flex flex-col flex-1">
+        <div className="flex gap-1.5 mb-3 flex-wrap">
+          {article.categories.map(tag => (
+            <span key={tag} className="px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase bg-[var(--bg-input)] text-[var(--accent-purple)] rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <h3 className="text-base font-bold mb-2 group-hover:text-[var(--accent-purple)] transition-colors leading-tight line-clamp-2">{article.title}</h3>
+        <p className="text-[var(--text-secondary)] text-xs mb-4 line-clamp-3 leading-relaxed flex-1">{article.description}</p>
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-[10px] font-mono text-[var(--text-secondary)] tracking-widest flex items-center gap-1.5">
+            <Calendar size={10} /> {date}
+          </span>
+          <span className="flex items-center gap-1 text-xs text-[var(--accent-purple)] opacity-0 group-hover:opacity-100 transition-opacity font-bold">
+            Read <ExternalLink size={11} />
+          </span>
+        </div>
+      </div>
+    </motion.a>
+  );
+};
 
 const StatItem = ({ label, value }: { label: string, value: string }) => (
   <div className="text-center md:text-left">
