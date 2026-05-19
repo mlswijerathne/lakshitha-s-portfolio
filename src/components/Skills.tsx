@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { TECH } from '../data';
 import { EASE } from '../lib/motion';
 import { Reveal } from './Reveal';
+import { TechIcon } from './TechIcon';
 
 export default function Skills() {
   return (
@@ -41,11 +42,10 @@ export default function Skills() {
               transition={{ duration: 0.45, ease: EASE, delay: (i % 8) * 0.05 }}
               className="group relative flex flex-col items-center justify-center gap-4 bg-white px-6 py-10 transition-colors duration-300 hover:bg-[#FAFAFA]"
             >
-              <img
-                src={tech.logo}
-                alt={tech.name}
-                loading="lazy"
-                className="h-10 w-10 object-contain opacity-60 grayscale transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
+              <TechIcon
+                slug={tech.slug}
+                title={tech.name}
+                className="h-10 w-10 text-[#0A0A0A] opacity-60 transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-100"
               />
               <span className="text-[13px] font-medium tracking-wide text-[#0A0A0A]">
                 {tech.name}

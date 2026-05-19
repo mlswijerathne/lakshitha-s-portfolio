@@ -26,7 +26,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: DURATION.enter, ease: EASE, delay: 0.45 }}
-            className="mt-6 max-w-md text-[15px] leading-relaxed text-[#6B6B6B] md:text-[16px]"
+            className="mt-5 max-w-md text-[15px] leading-relaxed text-[#6B6B6B] md:mt-6 md:text-[16px]"
           >
             {HERO.intro}
           </motion.p>
@@ -35,7 +35,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: DURATION.enter, ease: EASE, delay: 0.55 }}
-            className="mt-8"
+            className="mt-6 md:mt-8"
           >
             <a
               href={HERO.ctaHref}
@@ -54,7 +54,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: DURATION.enter, ease: EASE, delay: 0.7 }}
-            className="mt-10 grid grid-cols-2 gap-8 border-t border-[#E5E5E5] pt-8 md:mt-12 md:gap-12"
+            className="mt-7 grid grid-cols-2 gap-6 border-t border-[#E5E5E5] pt-6 md:mt-12 md:gap-12 md:pt-8"
           >
             {HERO_STATS.map((stat) => {
               const numeric = Number(stat.value);
@@ -80,12 +80,16 @@ export default function Hero() {
           delay={0.2}
           className="relative md:col-span-6 lg:col-span-7"
         >
-          <div className="relative h-[320px] overflow-hidden sm:h-[420px] md:h-full md:min-h-[520px]">
+          <div className="relative h-[260px] overflow-hidden sm:h-[380px] md:h-full md:min-h-[520px]">
             <motion.img
               src={HERO.image}
+              srcSet={HERO.imageSrcSet}
+              sizes={HERO.imageSizes}
               alt={HERO.imageAlt}
               className="absolute inset-0 h-full w-full object-cover"
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
               initial={{ scale: 1.08 }}
               animate={{ scale: 1 }}
               transition={{ duration: 1.4, ease: EASE }}

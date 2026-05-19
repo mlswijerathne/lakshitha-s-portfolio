@@ -44,7 +44,7 @@ function ArticleCard({ article }: { article: MediumArticle }) {
         {article.thumbnail ? (
           <img
             src={article.thumbnail}
-            alt=""
+            alt={`Cover image for: ${article.title}`}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />

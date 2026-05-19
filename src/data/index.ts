@@ -85,6 +85,9 @@ export const WRITING_META = {
   ctaLabel: 'Read on Medium',
 };
 
+const HERO_IMAGE_BASE =
+  'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&fm=webp';
+
 export const HERO = {
   headline1: 'Innovative',
   headline2: 'Software Engineer',
@@ -92,8 +95,14 @@ export const HERO = {
     'I build clean, reliable, and thoughtful web and mobile experiences — from clear interfaces to dependable backends and AI-powered features.',
   ctaLabel: 'Explore my work',
   ctaHref: '#projects',
-  image:
-    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1800&q=90',
+  image: `${HERO_IMAGE_BASE}&w=800&q=75`,
+  imageSrcSet: [
+    `${HERO_IMAGE_BASE}&w=480&q=70 480w`,
+    `${HERO_IMAGE_BASE}&w=800&q=75 800w`,
+    `${HERO_IMAGE_BASE}&w=1200&q=80 1200w`,
+    `${HERO_IMAGE_BASE}&w=1600&q=82 1600w`,
+  ].join(', '),
+  imageSizes: '(min-width: 1024px) 58vw, (min-width: 768px) 50vw, 100vw',
   imageAlt: 'Clean code on a developer screen',
 };
 
@@ -164,31 +173,33 @@ export const PROJECTS_META = {
     'From web platforms to mobile and AI-driven tools — selected work that shows how I think and build.',
   ctaLabel: 'View all projects',
   ctaHref: SITE.github,
-  statValue: '10',
-  statSymbol: '+',
-  statLabel: 'Projects completed',
+  statValue: '4',
+  statSymbol: '',
+  statLabel: 'Selected for showcase',
 };
 
-export const TECH: { name: string; logo: string; group: 'Languages' | 'Frameworks' | 'Tools' }[] = [
+import type { TechIconSlug } from '../components/TechIcon';
+
+export const TECH: { name: string; slug: TechIconSlug; group: 'Languages' | 'Frameworks' | 'Tools' }[] = [
   // Languages
-  { name: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript/0A0A0A', group: 'Languages' },
-  { name: 'TypeScript', logo: 'https://cdn.simpleicons.org/typescript/0A0A0A', group: 'Languages' },
-  { name: 'Python', logo: 'https://cdn.simpleicons.org/python/0A0A0A', group: 'Languages' },
-  { name: 'Java', logo: 'https://cdn.simpleicons.org/openjdk/0A0A0A', group: 'Languages' },
+  { name: 'JavaScript', slug: 'javascript', group: 'Languages' },
+  { name: 'TypeScript', slug: 'typescript', group: 'Languages' },
+  { name: 'Python', slug: 'python', group: 'Languages' },
+  { name: 'Java', slug: 'openjdk', group: 'Languages' },
   // Frameworks
-  { name: 'React', logo: 'https://cdn.simpleicons.org/react/0A0A0A', group: 'Frameworks' },
-  { name: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/0A0A0A', group: 'Frameworks' },
-  { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/0A0A0A', group: 'Frameworks' },
-  { name: 'Spring Boot', logo: 'https://cdn.simpleicons.org/spring/0A0A0A', group: 'Frameworks' },
-  { name: '.NET', logo: 'https://cdn.simpleicons.org/dotnet/0A0A0A', group: 'Frameworks' },
-  { name: 'FastAPI', logo: 'https://cdn.simpleicons.org/fastapi/0A0A0A', group: 'Frameworks' },
-  { name: 'Flutter', logo: 'https://cdn.simpleicons.org/flutter/0A0A0A', group: 'Frameworks' },
-  { name: 'Tailwind CSS', logo: 'https://cdn.simpleicons.org/tailwindcss/0A0A0A', group: 'Frameworks' },
+  { name: 'React', slug: 'react', group: 'Frameworks' },
+  { name: 'Next.js', slug: 'nextdotjs', group: 'Frameworks' },
+  { name: 'Node.js', slug: 'nodedotjs', group: 'Frameworks' },
+  { name: 'Spring Boot', slug: 'spring', group: 'Frameworks' },
+  { name: '.NET', slug: 'dotnet', group: 'Frameworks' },
+  { name: 'FastAPI', slug: 'fastapi', group: 'Frameworks' },
+  { name: 'Flutter', slug: 'flutter', group: 'Frameworks' },
+  { name: 'Tailwind CSS', slug: 'tailwindcss', group: 'Frameworks' },
   // Tools
-  { name: 'Docker', logo: 'https://cdn.simpleicons.org/docker/0A0A0A', group: 'Tools' },
-  { name: 'PostgreSQL', logo: 'https://cdn.simpleicons.org/postgresql/0A0A0A', group: 'Tools' },
-  { name: 'Git', logo: 'https://cdn.simpleicons.org/git/0A0A0A', group: 'Tools' },
-  { name: 'Firebase', logo: 'https://cdn.simpleicons.org/firebase/0A0A0A', group: 'Tools' },
+  { name: 'Docker', slug: 'docker', group: 'Tools' },
+  { name: 'PostgreSQL', slug: 'postgresql', group: 'Tools' },
+  { name: 'Git', slug: 'git', group: 'Tools' },
+  { name: 'Firebase', slug: 'firebase', group: 'Tools' },
 ];
 
 export const PROJECTS: Project[] = [
