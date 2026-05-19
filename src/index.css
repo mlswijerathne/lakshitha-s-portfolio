@@ -1,88 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0A0A0A;
+  --color-ink-soft: #6B6B6B;
+  --color-paper: #FFFFFF;
+  --color-paper-dim: #FAFAFA;
+  --color-rule: #E5E5E5;
+  --color-accent: #FF4D2E;
+  --color-night: #0E0E0E;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+    overflow-x: hidden;
   }
 
   ::selection {
-    background-color: var(--selection-bg);
+    background-color: #FF4D2E;
+    color: #FFFFFF;
   }
 
-  :root {
-    --bg-primary: #11131b;
-    --bg-secondary: #191b23;
-    --bg-card: #1d1f27;
-    --bg-input: #32343d;
-    --bg-footer: #0c0e16;
-    --text-primary: #e1e2ed;
-    --text-secondary: #c3c6d7;
-    --accent-blue: #b4c5ff;
-    --accent-purple: #ddb7ff;
-    --border-color: rgba(255, 255, 255, 0.05);
-    --gradient-from: #b4c5ff;
-    --gradient-to: #ddb7ff;
-    --glow-blue: rgba(180, 197, 255, 0.05);
-    --glow-purple: rgba(221, 183, 255, 0.05);
-    --hover-bg: rgba(180, 197, 255, 0.1);
-    --success-bg: rgba(34, 197, 94, 0.1);
-    --success-border: #166534;
-    --success-text: #86efac;
-    --error-bg: rgba(239, 68, 68, 0.1);
-    --error-border: #991b1b;
-    --error-text: #fca5a5;
-    --info-bg: rgba(59, 130, 246, 0.1);
-    --info-border: #1e40af;
-    --info-text: #93c5fd;
-    --selection-bg: rgba(180, 197, 255, 0.3);
-    --nav-scrolled: rgba(17, 19, 27, 0.8);
-    --gradient-overlay-from: #0c0e16;
-    --img-overlay: rgba(0, 0, 0, 0.6);
-    --calendar-empty: #1d1f27;
-    --calendar-l1: #2a4a8f;
-    --calendar-l2: #3b6cd4;
-    --calendar-l3: #5a8eff;
-    --calendar-l4: #b4c5ff;
+  :focus-visible {
+    outline: 2px solid #FF4D2E;
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
-  [data-theme="light"] {
-    --bg-primary: #f8f8ff;
-    --bg-secondary: #f0f0ff;
-    --bg-card: #ffffff;
-    --bg-input: #e8e8fa;
-    --bg-footer: #dcdcf0;
-    --text-primary: #08080f;
-    --text-secondary: #2a2a45;
-    --accent-blue: #6d7ff5;
-    --accent-purple: #a87af5;
-    --border-color: rgba(109, 127, 245, 0.15);
-    --gradient-from: #6d7ff5;
-    --gradient-to: #a87af5;
-    --glow-blue: rgba(109, 127, 245, 0.1);
-    --glow-purple: rgba(168, 122, 245, 0.1);
-    --hover-bg: rgba(109, 127, 245, 0.08);
-    --success-bg: rgba(34, 197, 94, 0.08);
-    --success-border: #bbf7d0;
-    --success-text: #15803d;
-    --error-bg: rgba(239, 68, 68, 0.08);
-    --error-border: #fecaca;
-    --error-text: #b91c1c;
-    --info-bg: rgba(109, 127, 245, 0.08);
-    --info-border: #c8d0fc;
-    --info-text: #5566e8;
-    --selection-bg: rgba(109, 127, 245, 0.18);
-    --nav-scrolled: rgba(248, 248, 255, 0.9);
-    --gradient-overlay-from: #f0f0ff;
-    --img-overlay: rgba(255, 255, 255, 0.25);
-    --calendar-empty: #ebebff;
-    --calendar-l1: #c8d0fc;
-    --calendar-l2: #9eaafc;
-    --calendar-l3: #6d7ff5;
-    --calendar-l4: #4a5ce0;
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FFFFFF;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #E5E5E5;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6B6B6B;
+  }
+}
+
+/* === EDITORIAL TYPE SCALE === */
+.text-display {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+.text-section {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.text-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* === UTILITY === */
+.no-tap-highlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
