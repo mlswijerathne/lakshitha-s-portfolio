@@ -1,5 +1,8 @@
 import { Github, Linkedin, BookOpen, Mail, ArrowUpRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import { SITE } from '../data';
+import { EASE, DURATION } from '../lib/motion';
+import { Reveal } from './Reveal';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -10,19 +13,42 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
             <h3 className="text-section text-[#0A0A0A]">
-              Let&apos;s build something <span className="text-[#FF4D2E]">together</span>.
+              <Reveal>Let&apos;s build something</Reveal>
+              <Reveal delay={0.1}>
+                <span className="text-[#FF4D2E]">together</span>.
+              </Reveal>
             </h3>
-            <a
+            <motion.a
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: DURATION.enter, ease: EASE, delay: 0.3 }}
               href={`mailto:${SITE.email}`}
-              className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-[#0A0A0A] underline-offset-4 hover:underline"
+              className="group mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-[#0A0A0A]"
             >
               <Mail size={16} strokeWidth={1.8} />
-              {SITE.email}
-              <ArrowUpRight size={14} strokeWidth={2.25} className="text-[#FF4D2E]" />
-            </a>
+              <span className="relative">
+                {SITE.email}
+                <span
+                  aria-hidden
+                  className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-[#0A0A0A] transition-transform duration-500 ease-out group-hover:scale-x-100"
+                />
+              </span>
+              <ArrowUpRight
+                size={14}
+                strokeWidth={2.25}
+                className="text-[#FF4D2E] transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </motion.a>
           </div>
 
-          <div className="flex items-center gap-3 md:col-span-5 md:justify-end">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: DURATION.enter, ease: EASE, delay: 0.4 }}
+            className="flex items-center gap-3 md:col-span-5 md:justify-end"
+          >
             <SocialLink href={SITE.github} label="GitHub">
               <Github size={16} strokeWidth={1.8} />
             </SocialLink>
@@ -32,7 +58,7 @@ export default function Footer() {
             <SocialLink href={SITE.medium} label="Medium">
               <BookOpen size={16} strokeWidth={1.8} />
             </SocialLink>
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-[#E5E5E5] pt-6 text-[13px] text-[#6B6B6B] sm:flex-row sm:items-center">
@@ -59,7 +85,7 @@ function SocialLink({
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="grid h-10 w-10 place-items-center rounded-full border border-[#E5E5E5] text-[#0A0A0A] transition-colors hover:border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white"
+      className="grid h-10 w-10 place-items-center rounded-full border border-[#E5E5E5] text-[#0A0A0A] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white"
     >
       {children}
     </a>

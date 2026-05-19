@@ -2,8 +2,10 @@ import { motion } from 'motion/react';
 import { ArrowUpRight, Calendar } from 'lucide-react';
 import type { MediumArticle } from '../data';
 import { SITE, WRITING_META } from '../data';
+import { EASE, DURATION } from '../lib/motion';
+import { Reveal } from './Reveal';
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const ease = EASE;
 
 interface WritingProps {
   articles: MediumArticle[];
@@ -36,7 +38,7 @@ function ArticleCard({ article }: { article: MediumArticle }) {
       href={article.link}
       target="_blank"
       rel="noreferrer"
-      className="group flex flex-col border border-[#E5E5E5] bg-white transition-colors duration-300 hover:border-[#0A0A0A]"
+      className="group flex flex-col border border-transparent bg-white transition-colors duration-300 hover:bg-[#FAFAFA]"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-[#FAFAFA]">
         {article.thumbnail ? (
@@ -91,23 +93,49 @@ export default function Writing({ articles, loading }: WritingProps) {
       <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
-            <span className="text-eyebrow text-[#6B6B6B]">Writing</span>
-            <h2 className="text-section mt-3 text-[#0A0A0A]">{WRITING_META.heading}</h2>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#6B6B6B] md:text-[16px]">
+            <motion.span
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.4, ease }}
+              className="text-eyebrow block text-[#6B6B6B]"
+            >
+              Writing
+            </motion.span>
+            <h2 className="text-section mt-3 text-[#0A0A0A]">
+              <Reveal delay={0.1}>{WRITING_META.heading}</Reveal>
+            </h2>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: DURATION.enter, ease, delay: 0.25 }}
+              className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#6B6B6B] md:text-[16px]"
+            >
               {WRITING_META.intro}
-            </p>
+            </motion.p>
           </div>
-          <div className="md:col-span-5 md:flex md:justify-end">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: DURATION.enter, ease, delay: 0.35 }}
+            className="md:col-span-5 md:flex md:justify-end"
+          >
             <a
               href={SITE.medium}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-[#E5E5E5] px-5 py-3 text-[14px] font-medium text-[#0A0A0A] transition-colors hover:border-[#0A0A0A]"
+              className="group inline-flex items-center gap-2 rounded-full border border-[#E5E5E5] px-5 py-3 text-[14px] font-medium text-[#0A0A0A] transition-colors duration-300 hover:border-[#0A0A0A]"
             >
               {WRITING_META.ctaLabel}
-              <ArrowUpRight size={16} strokeWidth={2.25} className="text-[#FF4D2E]" />
+              <ArrowUpRight
+                size={16}
+                strokeWidth={2.25}
+                className="text-[#FF4D2E] transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
             </a>
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-[#E5E5E5] bg-[#E5E5E5] md:mt-16 md:grid-cols-3">

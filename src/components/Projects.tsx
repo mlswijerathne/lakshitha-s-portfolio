@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, ArrowLeft, ArrowRight, Lock } from 'lucide-react';
 import { PROJECTS, PROJECTS_META } from '../data';
+import { EASE, DURATION } from '../lib/motion';
+import { Reveal } from './Reveal';
+import { Counter } from './Counter';
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const ease = EASE;
 
 export default function Projects() {
   const [index, setIndex] = useState(0);
@@ -17,20 +20,14 @@ export default function Projects() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 md:grid-cols-12 md:gap-12 md:px-8 md:py-24 lg:px-12">
         <div className="flex flex-col justify-between md:col-span-5 md:py-4">
           <div>
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.55, ease }}
-              className="text-section text-white"
-            >
-              {PROJECTS_META.heading}
-            </motion.h2>
+            <h2 className="text-section text-white">
+              <Reveal>{PROJECTS_META.heading}</Reveal>
+            </h2>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.55, ease, delay: 0.1 }}
+              transition={{ duration: DURATION.enter, ease, delay: 0.2 }}
               className="mt-5 max-w-md text-[15px] leading-relaxed text-white/60"
             >
               {PROJECTS_META.intro}
@@ -40,17 +37,21 @@ export default function Projects() {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, ease, delay: 0.2 }}
+              transition={{ duration: DURATION.enter, ease, delay: 0.35 }}
               className="mt-8"
             >
               <a
                 href={PROJECTS_META.ctaHref}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#FF4D2E] px-5 py-3 text-[14px] font-medium text-white transition-transform hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#FF4D2E] px-5 py-3 text-[14px] font-medium text-white transition-transform duration-300 ease-out hover:-translate-y-0.5"
               >
                 {PROJECTS_META.ctaLabel}
-                <ArrowUpRight size={16} strokeWidth={2.25} />
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={2.25}
+                  className="transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
               </a>
             </motion.div>
           </div>
@@ -58,7 +59,11 @@ export default function Projects() {
           <div className="mt-12 flex items-end justify-between md:mt-16">
             <div>
               <div className="text-[34px] font-semibold leading-none tracking-tight md:text-[40px]">
-                <span className="text-white">{PROJECTS_META.statValue}</span>
+                {Number.isFinite(Number(PROJECTS_META.statValue)) ? (
+                  <Counter to={Number(PROJECTS_META.statValue)} className="text-white" />
+                ) : (
+                  <span className="text-white">{PROJECTS_META.statValue}</span>
+                )}
                 <span className="text-[#FF4D2E]">{PROJECTS_META.statSymbol}</span>
               </div>
               <div className="mt-2 text-[13px] text-white/55">{PROJECTS_META.statLabel}</div>

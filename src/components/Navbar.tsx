@@ -43,9 +43,15 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-[14px] text-[#0A0A0A] transition-colors hover:text-[#FF4D2E]"
+                className="group relative text-[14px] text-[#0A0A0A] transition-colors duration-300"
               >
-                {link.label}
+                <span className="transition-colors duration-300 group-hover:text-[#FF4D2E]">
+                  {link.label}
+                </span>
+                <span
+                  aria-hidden
+                  className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#FF4D2E] transition-transform duration-300 ease-out group-hover:scale-x-100"
+                />
               </a>
             </li>
           ))}
@@ -54,10 +60,14 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden items-center gap-1.5 rounded-full bg-[#0A0A0A] px-4 py-2 text-[13px] font-medium text-white transition-transform hover:-translate-y-0.5 md:inline-flex"
+            className="group hidden items-center gap-1.5 rounded-full bg-[#0A0A0A] px-4 py-2 text-[13px] font-medium text-white transition-transform duration-300 ease-out hover:-translate-y-0.5 md:inline-flex"
           >
             Contact me
-            <ArrowUpRight size={14} strokeWidth={2.25} />
+            <ArrowUpRight
+              size={14}
+              strokeWidth={2.25}
+              className="transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
           </a>
 
           <button
