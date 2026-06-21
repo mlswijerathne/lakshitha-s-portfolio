@@ -87,7 +87,7 @@ export const WRITING_META = {
 };
 
 const HERO_IMAGE_BASE =
-  'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&fm=webp';
+  'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&fm=webp';
 
 export const HERO = {
   tagline: 'AI Agent Developer & n8n Automation Expert',
@@ -105,13 +105,73 @@ export const HERO = {
     `${HERO_IMAGE_BASE}&w=1600&q=82 1600w`,
   ].join(', '),
   imageSizes: '(min-width: 1024px) 58vw, (min-width: 768px) 50vw, 100vw',
-  imageAlt: 'Clean code on a developer screen',
+  imageAlt: 'Abstract AI and automation visual',
 };
 
 export const HERO_STATS: { value: string; symbol: string; label: string }[] = [
   { value: '20', symbol: '+', label: 'Projects delivered' },
   { value: '3', symbol: '+', label: 'Years experience' },
 ];
+
+export const AVAILABILITY = {
+  status: 'Available for new projects',
+};
+
+export const PROCESS_META = {
+  eyebrow: 'How I work',
+  heading: 'From first message to shipped',
+  intro:
+    'A simple, low-risk way to work together — clear scope, steady updates, and no surprises. The same process my Upwork clients rely on.',
+};
+
+export const PROCESS: { step: string; title: string; description: string }[] = [
+  {
+    step: '01',
+    title: 'Discovery',
+    description:
+      'We talk through your goal, scope, and what success looks like — no jargon, just a clear plan.',
+  },
+  {
+    step: '02',
+    title: 'Proposal & milestones',
+    description:
+      'You get a fixed scope, timeline, and milestones, so you always know what is happening and when.',
+  },
+  {
+    step: '03',
+    title: 'Build & iterate',
+    description:
+      'I ship in increments with regular updates — you review and refine as the work takes shape.',
+  },
+  {
+    step: '04',
+    title: 'Deliver & support',
+    description:
+      'Full handover with docs and deployment, plus post-launch support to keep things running.',
+  },
+];
+
+export const TESTIMONIALS_META = {
+  eyebrow: 'Social proof',
+  heading: 'What people say',
+  intro:
+    'Feedback from teams, mentors, and collaborators I have built with.',
+};
+
+export const CONTACT_META = {
+  eyebrow: "Let's work together",
+  heading: 'Have a project in mind?',
+  intro:
+    "Tell me what you're building — an AI agent, an automation, or a full web or mobile app. I usually reply within 24 hours and can hop on a quick call to scope it out.",
+  responseTime: 'Replies within 24 hours',
+  points: [
+    'Free 20-minute scoping call',
+    'Clear milestones & fixed scope',
+    'Post-launch support included',
+  ],
+  upworkCtaLabel: 'Hire me on Upwork',
+  emailCtaLabel: 'Email me directly',
+};
 
 const ABOUT_IMAGE_BASE =
   'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&fm=webp';

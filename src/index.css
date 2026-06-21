@@ -58,8 +58,8 @@
 
 /* === EDITORIAL TYPE SCALE === */
 .text-display {
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
-  line-height: 1.02;
+  font-size: clamp(2.25rem, 6vw, 4.75rem);
+  line-height: 1.04;
   letter-spacing: -0.035em;
   font-weight: 600;
 }

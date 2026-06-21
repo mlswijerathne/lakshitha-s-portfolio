@@ -1,14 +1,11 @@
 import { motion } from 'motion/react';
-import { Quote } from 'lucide-react';
-import { TESTIMONIALS, TESTIMONIALS_META } from '../data';
+import { PROCESS, PROCESS_META } from '../data';
 import { EASE, DURATION } from '../lib/motion';
 import { Reveal } from './Reveal';
 
-export default function Testimonials() {
-  if (!TESTIMONIALS.length) return null;
-
+export default function Process() {
   return (
-    <section id="testimonials" className="bg-white py-20 md:py-28">
+    <section className="bg-[#FAFAFA] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
         <div className="mb-10 max-w-2xl md:mb-14">
           <motion.span
@@ -18,10 +15,10 @@ export default function Testimonials() {
             transition={{ duration: 0.4, ease: EASE }}
             className="text-eyebrow block text-[#6B6B6B]"
           >
-            {TESTIMONIALS_META.eyebrow}
+            {PROCESS_META.eyebrow}
           </motion.span>
           <h2 className="text-section mt-3 text-[#0A0A0A]">
-            <Reveal delay={0.1}>{TESTIMONIALS_META.heading}</Reveal>
+            <Reveal delay={0.1}>{PROCESS_META.heading}</Reveal>
           </h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -30,33 +27,34 @@ export default function Testimonials() {
             transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
             className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#6B6B6B] md:text-[16px]"
           >
-            {TESTIMONIALS_META.intro}
+            {PROCESS_META.intro}
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
-          {TESTIMONIALS.map((t, i) => (
-            <motion.figure
-              key={t.id}
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-[#E5E5E5] bg-[#E5E5E5] sm:grid-cols-2 lg:grid-cols-4">
+          {PROCESS.map((item, i) => (
+            <motion.div
+              key={item.step}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: DURATION.enter, ease: EASE, delay: 0.1 + i * 0.08 }}
-              className="flex h-full flex-col justify-between rounded-2xl border border-[#E5E5E5] bg-[#FAFAFA] p-7 md:p-8"
+              className="group relative bg-white p-7 md:p-8"
             >
-              <div>
-                <Quote size={22} strokeWidth={2} className="text-[#FF4D2E]" />
-                <blockquote className="mt-5 text-[15px] leading-relaxed text-[#0A0A0A]">
-                  {t.content}
-                </blockquote>
-              </div>
-              <figcaption className="mt-7 border-t border-[#E5E5E5] pt-5">
-                <div className="text-[14px] font-semibold text-[#0A0A0A]">{t.name}</div>
-                <div className="mt-0.5 text-[13px] text-[#6B6B6B]">
-                  {t.role} · {t.company}
-                </div>
-              </figcaption>
-            </motion.figure>
+              <span className="font-mono text-[13px] font-medium tracking-widest text-[#FF4D2E]">
+                {item.step}
+              </span>
+              <h3 className="mt-5 text-[16px] font-semibold tracking-tight text-[#0A0A0A]">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-[13.5px] leading-relaxed text-[#6B6B6B]">
+                {item.description}
+              </p>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-x-7 bottom-0 h-px origin-left scale-x-0 bg-[#FF4D2E] transition-transform duration-500 ease-out group-hover:scale-x-100 md:inset-x-8"
+              />
+            </motion.div>
           ))}
         </div>
       </div>

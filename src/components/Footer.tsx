@@ -1,31 +1,15 @@
 import { Github, Linkedin, BookOpen, Mail, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import { siUpwork } from 'simple-icons';
 import { SITE } from '../data';
 import { EASE, DURATION } from '../lib/motion';
 import { Reveal } from './Reveal';
-
-function UpworkIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      role="img"
-      aria-hidden
-      width={size}
-      height={size}
-      fill="currentColor"
-    >
-      <path d={siUpwork.path} />
-    </svg>
-  );
-}
+import { UpworkIcon } from './UpworkIcon';
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="border-t border-[#E5E5E5] bg-white">
+    <footer className="border-t border-[#E5E5E5] bg-white">
       <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-16 lg:px-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
