@@ -31,7 +31,7 @@ export default function Services() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden border border-[#E5E5E5] bg-[#E5E5E5] lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-[#E5E5E5] bg-[#E5E5E5] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {SERVICES.map((service, i) => {
             const Icon = ICONS[service.icon];
             return (

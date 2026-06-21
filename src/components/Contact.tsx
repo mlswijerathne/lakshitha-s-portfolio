@@ -17,8 +17,8 @@ const CONTACT_ITEMS = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'mlswijerathne@gmail.com',
-    href: 'mailto:mlswijerathne@gmail.com',
+    value: 'lakshitha.dev@outlook.com',
+    href: 'mailto:lakshitha.dev@outlook.com',
   },
   {
     icon: Phone,
@@ -63,7 +63,7 @@ export default function Contact() {
         templateId === 'your_template_id' ||
         publicKey === 'your_public_key'
       ) {
-        const mailtoLink = `mailto:mlswijerathne@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`)}`;
+        const mailtoLink = `mailto:lakshitha.dev@outlook.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`)}`;
         window.open(mailtoLink, '_blank');
         setSubmitStatus('mailto');
         setFormData({ name: '', email: '', subject: '', message: '' });
@@ -79,7 +79,7 @@ export default function Contact() {
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          to_email: 'mlswijerathne@gmail.com',
+          to_email: 'lakshitha.dev@outlook.com',
           reply_to: formData.email,
         },
         publicKey,
@@ -196,7 +196,7 @@ export default function Contact() {
                   }}
                 >
                   <p className="text-sm font-medium" style={{ color: 'var(--info-text)' }}>
-                    Your email client should open. If not, send directly to mlswijerathne@gmail.com
+                    Your email client should open. If not, send directly to lakshitha.dev@outlook.com
                   </p>
                 </div>
               )}

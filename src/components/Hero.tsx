@@ -13,6 +13,15 @@ export default function Hero() {
     >
       <div className="mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-stretch gap-10 px-5 pb-12 md:grid-cols-12 md:gap-8 md:px-8 md:pb-16 lg:px-12">
         <div className="flex flex-col justify-center md:col-span-6 md:py-8 lg:col-span-5 lg:py-12">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: DURATION.enter, ease: EASE, delay: 0.02 }}
+            className="mb-4 text-[11px] font-mono uppercase tracking-[0.3em] text-[#FF4D2E] md:mb-5 md:text-[12px]"
+          >
+            {HERO.tagline}
+          </motion.p>
+
           <h1 className="text-display">
             <Reveal className="text-[#0A0A0A]" delay={0.05} immediate>
               {HERO.headline1}

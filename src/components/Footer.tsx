@@ -1,8 +1,25 @@
 import { Github, Linkedin, BookOpen, Mail, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import { siUpwork } from 'simple-icons';
 import { SITE } from '../data';
 import { EASE, DURATION } from '../lib/motion';
 import { Reveal } from './Reveal';
+
+function UpworkIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      role="img"
+      aria-hidden
+      width={size}
+      height={size}
+      fill="currentColor"
+    >
+      <path d={siUpwork.path} />
+    </svg>
+  );
+}
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -18,28 +35,47 @@ export default function Footer() {
                 <span className="text-[#FF4D2E]">together</span>.
               </Reveal>
             </h3>
-            <motion.a
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: DURATION.enter, ease: EASE, delay: 0.3 }}
-              href={`mailto:${SITE.email}`}
-              className="group mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-[#0A0A0A]"
+              className="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6"
             >
-              <Mail size={16} strokeWidth={1.8} />
-              <span className="relative">
-                {SITE.email}
-                <span
-                  aria-hidden
-                  className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-[#0A0A0A] transition-transform duration-500 ease-out group-hover:scale-x-100"
+              <a
+                href={`mailto:${SITE.email}`}
+                className="group inline-flex items-center gap-2 text-[15px] font-medium text-[#0A0A0A]"
+              >
+                <Mail size={16} strokeWidth={1.8} />
+                <span className="relative">
+                  {SITE.email}
+                  <span
+                    aria-hidden
+                    className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-[#0A0A0A] transition-transform duration-500 ease-out group-hover:scale-x-100"
+                  />
+                </span>
+                <ArrowUpRight
+                  size={14}
+                  strokeWidth={2.25}
+                  className="text-[#FF4D2E] transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 />
-              </span>
-              <ArrowUpRight
-                size={14}
-                strokeWidth={2.25}
-                className="text-[#FF4D2E] transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </motion.a>
+              </a>
+
+              <a
+                href={SITE.upwork}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#14A800] px-4 py-2 text-[14px] font-medium text-white transition-transform duration-300 ease-out hover:-translate-y-0.5"
+              >
+                <UpworkIcon size={16} />
+                Hire me on Upwork
+                <ArrowUpRight
+                  size={14}
+                  strokeWidth={2.25}
+                  className="transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </motion.div>
           </div>
 
           <motion.div
@@ -57,6 +93,9 @@ export default function Footer() {
             </SocialLink>
             <SocialLink href={SITE.medium} label="Medium">
               <BookOpen size={16} strokeWidth={1.8} />
+            </SocialLink>
+            <SocialLink href={SITE.upwork} label="Upwork">
+              <UpworkIcon size={16} />
             </SocialLink>
           </motion.div>
         </div>

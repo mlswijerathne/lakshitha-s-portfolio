@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, ArrowLeft, ArrowRight, Lock } from 'lucide-react';
 import { PROJECTS, PROJECTS_META } from '../data';
@@ -11,6 +11,14 @@ const ease = EASE;
 export default function Projects() {
   const [index, setIndex] = useState(0);
   const current = PROJECTS[index];
+
+  // Preload every project image so carousel swaps are instant (no black flash).
+  useEffect(() => {
+    PROJECTS.forEach((p) => {
+      const img = new Image();
+      img.src = p.image;
+    });
+  }, []);
 
   const prev = () => setIndex((i) => (i - 1 + PROJECTS.length) % PROJECTS.length);
   const next = () => setIndex((i) => (i + 1) % PROJECTS.length);
@@ -97,12 +105,13 @@ export default function Projects() {
                 key={current.id}
                 src={current.image}
                 alt={current.title}
-                initial={{ opacity: 0, scale: 1.02 }}
+                initial={{ opacity: 0, scale: 1.04 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease }}
+                transition={{ duration: 0.6, ease }}
                 className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </AnimatePresence>
 

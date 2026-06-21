@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { ABOUT } from '../data';
@@ -5,18 +6,23 @@ import { EASE, DURATION } from '../lib/motion';
 import { Reveal, ImageReveal } from './Reveal';
 
 export default function About() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <section id="about" className="bg-white py-20 md:py-28 lg:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:grid-cols-12 md:gap-12 md:px-8 lg:px-12">
         <ImageReveal className="relative md:col-span-5">
-          <div className="relative aspect-[4/5] overflow-hidden bg-[#FAFAFA]">
+          <div className="relative aspect-[4/5] overflow-hidden bg-[#F0F0F0]">
             <motion.img
               src={ABOUT.image}
+              srcSet={ABOUT.imageSrcSet}
+              sizes={ABOUT.imageSizes}
               alt={ABOUT.imageAlt}
               loading="lazy"
+              decoding="async"
+              onLoad={() => setLoaded(true)}
               initial={{ scale: 1.06 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true, margin: '-40px' }}
+              animate={{ scale: loaded ? 1 : 1.06, opacity: loaded ? 1 : 0 }}
               transition={{ duration: 1.4, ease: EASE }}
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -35,6 +41,16 @@ export default function About() {
         </ImageReveal>
 
         <div className="flex flex-col justify-center md:col-span-7 md:pl-4 lg:pl-12">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: DURATION.enter, ease: EASE }}
+            className="mb-4 text-[11px] font-mono uppercase tracking-[0.3em] text-[#FF4D2E] md:text-[12px]"
+          >
+            {ABOUT.tagline}
+          </motion.p>
+
           <h2 className="text-section text-[#0A0A0A]">
             <Reveal>{ABOUT.heading}</Reveal>
           </h2>

@@ -1,5 +1,4 @@
 import Navbar from './components/Navbar';
-import ScrollProgress from './components/ScrollProgress';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
@@ -14,7 +13,6 @@ export default function App() {
 
   return (
     <div className="bg-white text-[#0A0A0A] font-sans antialiased">
-      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />

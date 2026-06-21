@@ -62,11 +62,12 @@ export const SITE = {
   name: 'Lakshitha',
   brand: 'lakshitha.dev',
   role: 'Associate Software Engineer',
-  email: 'mlswijerathne@gmail.com',
+  email: 'lakshitha.dev@outlook.com',
   website: 'https://lakshitha.dev',
   github: 'https://github.com/mlswijerathne',
   linkedin: 'https://www.linkedin.com/in/lakshitha-wijerathne/',
   medium: 'https://medium.com/@lakshithaa',
+  upwork: 'https://www.upwork.com/freelancers/~01a0bb041b5efe1541',
 };
 
 export const NAV_LINKS: { label: string; href: string }[] = [
@@ -89,6 +90,7 @@ const HERO_IMAGE_BASE =
   'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&fm=webp';
 
 export const HERO = {
+  tagline: 'AI Agent Developer & n8n Automation Expert',
   headline1: 'Innovative',
   headline2: 'Software Engineer',
   intro:
@@ -111,8 +113,12 @@ export const HERO_STATS: { value: string; symbol: string; label: string }[] = [
   { value: '3', symbol: '+', label: 'Years experience' },
 ];
 
+const ABOUT_IMAGE_BASE =
+  'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&fm=webp';
+
 export const ABOUT = {
   year: '2022',
+  tagline: 'AI Agent Developer & n8n Automation Expert',
   heading: 'Built on logic, driven by craft',
   intro:
     'I started writing code in 2022 and have spent the years since shipping production software — from real-time auction platforms to AI-driven agents. I care about clean architecture, predictable systems, and details that hold up under pressure.',
@@ -125,8 +131,13 @@ export const ABOUT = {
   ],
   ctaLabel: 'Know more about me',
   ctaHref: '#contact',
-  image:
-    'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1000&q=80',
+  image: `${ABOUT_IMAGE_BASE}&w=800&q=78`,
+  imageSrcSet: [
+    `${ABOUT_IMAGE_BASE}&w=480&q=72 480w`,
+    `${ABOUT_IMAGE_BASE}&w=800&q=78 800w`,
+    `${ABOUT_IMAGE_BASE}&w=1100&q=80 1100w`,
+  ].join(', '),
+  imageSizes: '(min-width: 768px) 42vw, 100vw',
   imageAlt: 'Engineer at work',
 };
 
@@ -173,7 +184,7 @@ export const PROJECTS_META = {
     'From web platforms to mobile and AI-driven tools — selected work that shows how I think and build.',
   ctaLabel: 'View all projects',
   ctaHref: SITE.github,
-  statValue: '4',
+  statValue: '5',
   statSymbol: '',
   statLabel: 'Selected for showcase',
 };
@@ -211,12 +222,25 @@ export const PROJECTS: Project[] = [
     tags: ['MCP', 'Google ADK', 'Python', 'FastAPI', 'LLMs'],
     category: 'AI',
     image:
-      'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=90',
+      'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&fm=webp&w=1400&q=82',
     liveUrl: '#',
     repoUrl: '#',
     year: '2026',
     company: 'BISTEC Global Services',
     confidential: true,
+  },
+  {
+    id: '5',
+    title: 'Agentic AI Travel Planner',
+    description:
+      'Multi-agent system that generates personalized multi-day itineraries from a user\'s budget, dates, and travel style — destination researcher, accommodation finder, and activity recommender agents calling external tools autonomously, with a conversational UI to re-plan any day. Cut trip planning from ~3 hours to under 2 minutes.',
+    tags: ['LangChain', 'OpenAI GPT-4', 'FastAPI', 'n8n', 'Google Places API'],
+    category: 'AI',
+    image:
+      'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&fm=webp&w=1400&q=82',
+    liveUrl: '#',
+    repoUrl: '#',
+    year: '2025',
   },
   {
     id: '2',
@@ -226,7 +250,7 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'ASP.NET Core', 'SQL Server', 'Stripe'],
     category: 'Web',
     image:
-      'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1600&q=90',
+      'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&fm=webp&w=1400&q=82',
     liveUrl: '#',
     repoUrl: 'https://github.com/mlswijerathne/AuctionManagement/blob/main/README.md',
     year: '2024',
@@ -239,7 +263,7 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Axios'],
     category: 'Web',
     image:
-      'https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=1600&q=90',
+      'https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&fm=webp&w=1400&q=82',
     liveUrl: 'http://152.67.3.153/',
     repoUrl: 'https://github.com/mlswijerathne/financeManagement/blob/test/README.md',
     year: '2024',
@@ -252,7 +276,7 @@ export const PROJECTS: Project[] = [
     tags: ['Flutter', 'Firebase', 'Google Maps', 'Provider'],
     category: 'Mobile',
     image:
-      'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1600&q=90',
+      'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&fm=webp&w=1400&q=82',
     liveUrl: '#',
     repoUrl: 'https://github.com/mlswijerathne/Waste-Management-System/blob/main/README.md',
     year: '2024',
@@ -274,6 +298,13 @@ export const EXPERIENCES: Experience[] = [
     company: 'BISTEC Global Services',
     period: 'Aug 2025 — Jan 2026',
     description: 'Worked with Python, ASP.NET Core, Next.js, Docker, Supabase, and Cloudflare. Gained hands-on experience with LLMs and AI integration.',
+  },
+  {
+    id: '4',
+    role: 'AI Agent Developer (Freelance)',
+    company: 'Upwork',
+    period: 'Sep 2025 — Present',
+    description: 'Building AI agents, chatbots, and n8n automation workflows for small and medium businesses — LangChain, OpenAI, FastAPI, and end-to-end API integration, owning projects from design to deployment.',
   },
   {
     id: '3',
